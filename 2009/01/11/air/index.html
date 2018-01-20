@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>尾牙大贏家-尾牙AIR程式 | Joehwang.tw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="為今年尾牙開發的程式，順便做Air+SQLite的練習程式功能:1.輸入工號後，秀出中獎人的大頭照和獎項2.能列出每個獎項的中獎人員列表3.在列表點擊中獎人照片會有捐出來的選項(為主管量身設計的功能XDDD)4.得獎人所得獎項存到DB中。   有興趣的朋友可以下載使用   使用方法:安裝目錄下的bg.png(背景圖)/data–year-end.sqlite(存放員工資料的SQlite資料庫)–h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尾牙大贏家-尾牙AIR程式">
+<meta property="og:url" content="http://blog.joehwang.net/2009/01/11/air/index.html">
+<meta property="og:site_name" content="Joehwang.tw">
+<meta property="og:description" content="為今年尾牙開發的程式，順便做Air+SQLite的練習程式功能:1.輸入工號後，秀出中獎人的大頭照和獎項2.能列出每個獎項的中獎人員列表3.在列表點擊中獎人照片會有捐出來的選項(為主管量身設計的功能XDDD)4.得獎人所得獎項存到DB中。   有興趣的朋友可以下載使用   使用方法:安裝目錄下的bg.png(背景圖)/data–year-end.sqlite(存放員工資料的SQlite資料庫)–h">
+<meta property="og:image" content="http://1.bp.blogspot.com/_hl70JQ2zGqA/SWhDyWlRhlI/AAAAAAAAClg/o05S_TnzFHg/s400/1.png">
+<meta property="og:image" content="http://4.bp.blogspot.com/_hl70JQ2zGqA/SWhEFyXO8NI/AAAAAAAAClw/FjT5hGmlTbA/s400/2.png">
+<meta property="og:image" content="http://1.bp.blogspot.com/_hl70JQ2zGqA/SWhENH-iMEI/AAAAAAAACl4/dN3zBcPEiBs/s400/3.png">
+<meta property="og:updated_time" content="2018-01-19T16:02:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="尾牙大贏家-尾牙AIR程式">
+<meta name="twitter:description" content="為今年尾牙開發的程式，順便做Air+SQLite的練習程式功能:1.輸入工號後，秀出中獎人的大頭照和獎項2.能列出每個獎項的中獎人員列表3.在列表點擊中獎人照片會有捐出來的選項(為主管量身設計的功能XDDD)4.得獎人所得獎項存到DB中。   有興趣的朋友可以下載使用   使用方法:安裝目錄下的bg.png(背景圖)/data–year-end.sqlite(存放員工資料的SQlite資料庫)–h">
+<meta name="twitter:image" content="http://1.bp.blogspot.com/_hl70JQ2zGqA/SWhDyWlRhlI/AAAAAAAAClg/o05S_TnzFHg/s400/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Joehwang.tw" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Joehwang.tw</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.joehwang.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-air" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2009/01/11/air/" class="article-date">
+  <time datetime="2009-01-10T22:30:00.000Z" itemprop="datePublished">2009-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      尾牙大贏家-尾牙AIR程式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>為今年尾牙開發的程式，順便做Air+SQLite的練習<br>程式功能:<br>1.輸入工號後，秀出中獎人的大頭照和獎項<br>2.能列出每個獎項的中獎人員列表<br>3.在列表點擊中獎人照片會有捐出來的選項(為主管量身設計的功能XDDD)<br>4.得獎人所得獎項存到DB中。  </p>
+<p>有興趣的朋友可以<a href="http://joehwang.myweb.hinet.net/xuite/yearend.zip" target="_blank" rel="noopener">下載使用</a>  </p>
+<p><strong>使用方法:</strong><br>安裝目錄下的<br>bg.png(背景圖)<br>/data<br>–year-end.sqlite(存放員工資料的SQlite資料庫)<br>–headimgs(存放各員工的大頭照)  </p>
+<p>以上的檔案請自行更改<br>SQLite資料庫的編輯推薦使用(<a href="http://blog.riaproject.com/air/815.html" target="_blank" rel="noopener">Lita-Air開發的SQLite編輯器</a>)  </p>
+<p>謝謝各位!  </p>
+<p><a href="http://1.bp.blogspot.com/_hl70JQ2zGqA/SWhDyWlRhlI/AAAAAAAAClg/o05S_TnzFHg/s1600-h/1.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/_hl70JQ2zGqA/SWhDyWlRhlI/AAAAAAAAClg/o05S_TnzFHg/s400/1.png" alt=""></a><br><a href="http://3.bp.blogspot.com/_hl70JQ2zGqA/SWhD4MrEmyI/AAAAAAAAClo/ytGyZ8-sCPk/s1600-h/2.png" target="_blank" rel="noopener"></a><a href="http://4.bp.blogspot.com/_hl70JQ2zGqA/SWhEFyXO8NI/AAAAAAAAClw/FjT5hGmlTbA/s1600-h/2.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/_hl70JQ2zGqA/SWhEFyXO8NI/AAAAAAAAClw/FjT5hGmlTbA/s400/2.png" alt=""></a>  </p>
+<p><a href="http://1.bp.blogspot.com/_hl70JQ2zGqA/SWhENH-iMEI/AAAAAAAACl4/dN3zBcPEiBs/s1600-h/3.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/_hl70JQ2zGqA/SWhENH-iMEI/AAAAAAAACl4/dN3zBcPEiBs/s400/3.png" alt=""></a><a href="http://3.bp.blogspot.com/_hl70JQ2zGqA/SWhD4MrEmyI/AAAAAAAAClo/ytGyZ8-sCPk/s1600-h/2.png" target="_blank" rel="noopener"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2009/01/11/air/" data-id="cjcnlghld001gb3ky2ipc6ctb" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2009/01/11/flashpapervision3d/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          在Flash中使用Papervision3D
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2009/01/10/cairngorm/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Cairngorm中文教學與介紹</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/">GCP</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/">docker</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/GCP-Container-Registry/">GCP Container Registry</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/">Jandi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/redmine/">redmine</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/rails/">rails</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/">link_to</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/">ssl</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/Https/">Https</a></li></ul></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">January 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">October 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/06/">June 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/01/">January 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/12/">December 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/11/">November 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/10/">October 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">September 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/08/">August 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/07/">July 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">June 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/05/">May 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/04/">April 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/02/">February 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">October 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/08/">August 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/07/">July 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/05/">May 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/04/">April 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/03/">March 2006</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/19/use-gcp-container-registry-to-establish-docker-private-registry/">使用GCP Container Registry建立docker private registry</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/23/rails51-and-webpacker/">rails5.1與webpacker</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/aws-api-gateway-notes/">AWS api gateway筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/1575726/">在aws Lambda上運行含binary的nodejs modules</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Joehwang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

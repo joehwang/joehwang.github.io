@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JavaScript小感 | Joehwang.tw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="這兩個禮拜寫了不少JavaScript的code，雖然進度緩慢，但也沒遇上什麼大問題，而且從完全不會寫，到現在稍稍寫的出東西還蠻有成就感的。哇哈!下一步就朝AJAX邁進!!   這次使用javascript的目的，主是作隱藏傳送的表單(上面不喜歡看post/get時整個畫面重新載入)我用的方法是在頁面中加入隱藏的Iframe，再由iframe用javascript控制主畫面。常用到的就是把ifam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript小感">
+<meta property="og:url" content="http://blog.joehwang.net/2006/04/20/javascript/index.html">
+<meta property="og:site_name" content="Joehwang.tw">
+<meta property="og:description" content="這兩個禮拜寫了不少JavaScript的code，雖然進度緩慢，但也沒遇上什麼大問題，而且從完全不會寫，到現在稍稍寫的出東西還蠻有成就感的。哇哈!下一步就朝AJAX邁進!!   這次使用javascript的目的，主是作隱藏傳送的表單(上面不喜歡看post/get時整個畫面重新載入)我用的方法是在頁面中加入隱藏的Iframe，再由iframe用javascript控制主畫面。常用到的就是把ifam">
+<meta property="og:updated_time" content="2018-01-19T16:02:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript小感">
+<meta name="twitter:description" content="這兩個禮拜寫了不少JavaScript的code，雖然進度緩慢，但也沒遇上什麼大問題，而且從完全不會寫，到現在稍稍寫的出東西還蠻有成就感的。哇哈!下一步就朝AJAX邁進!!   這次使用javascript的目的，主是作隱藏傳送的表單(上面不喜歡看post/get時整個畫面重新載入)我用的方法是在頁面中加入隱藏的Iframe，再由iframe用javascript控制主畫面。常用到的就是把ifam">
+  
+    <link rel="alternate" href="/atom.xml" title="Joehwang.tw" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Joehwang.tw</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.joehwang.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-javascript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/04/20/javascript/" class="article-date">
+  <time datetime="2006-04-20T15:20:00.000Z" itemprop="datePublished">2006-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript小感
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>這兩個禮拜寫了不少JavaScript的code，雖然進度緩慢，但也沒遇上什麼大問題，而且從完全不會寫，到現在稍稍寫的出東西還蠻有成就感的。哇哈!下一步就朝AJAX邁進!!  </p>
+<p>這次使用javascript的目的，主是作隱藏傳送的表單(上面不喜歡看post/get時整個畫面重新載入)我用的方法是在頁面中加入隱藏的Iframe，再由iframe用javascript控制主畫面。常用到的就是把ifame的值送到主畫面，不然就是相反  </p>
+<p>最常見的語法為:  </p>
+<p>**1.this.parent.document.getElementById(“Qtitle”).innerText=””;  </p>
+<p>2.alert(“xxx”);**  </p>
+<p>在之前getElementById(“Qtitle”)這寫法很少人用，通常是用.all.XXX，不過all這保留字要被取消了，所以還是符合潮流的好。而alert(“XXX”);是彈出式訊息。偵錯時挺好用的。  </p>
+<p>另一個比較特別的是拆解資料庫的字串然後塞到動態生成的表格  </p>
+<p>大概就這樣，寫了兩個禮拜的JS，覺得還真蠻好用的，很多事在clinet處理就可以了，省去server不少負擔。唯一困擾的是使用者若禁用瀏覽器的JS選項，那就什麼都沒有啦 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/04/20/javascript/" data-id="cjcnlghje0000b3kyb4bxie88" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2006/04/26/asp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          製作簡繁體asp的注意事項
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2006/03/28/asp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">asp基本分頁範例</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/">GCP</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/">docker</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/GCP-Container-Registry/">GCP Container Registry</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/">Jandi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/redmine/">redmine</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/rails/">rails</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/">link_to</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/">ssl</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/Https/">Https</a></li></ul></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">January 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">October 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/06/">June 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/01/">January 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/12/">December 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/11/">November 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/10/">October 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">September 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/08/">August 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/07/">July 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">June 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/05/">May 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/04/">April 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/02/">February 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">October 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/08/">August 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/07/">July 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/05/">May 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/04/">April 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/03/">March 2006</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/19/use-gcp-container-registry-to-establish-docker-private-registry/">使用GCP Container Registry建立docker private registry</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/23/rails51-and-webpacker/">rails5.1與webpacker</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/aws-api-gateway-notes/">AWS api gateway筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/1575726/">在aws Lambda上運行含binary的nodejs modules</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Joehwang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

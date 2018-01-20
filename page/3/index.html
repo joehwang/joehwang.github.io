@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Joehwang.tw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Joehwang.tw">
+<meta property="og:url" content="http://blog.joehwang.net/page/3/index.html">
+<meta property="og:site_name" content="Joehwang.tw">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Joehwang.tw">
+  
+    <link rel="alternate" href="/atom.xml" title="Joehwang.tw" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Joehwang.tw</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.joehwang.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-blog-post" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2008/10/04/blog-post/" class="article-date">
+  <time datetime="2008-10-04T05:24:00.000Z" itemprop="datePublished">2008-10-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2008/10/04/blog-post/">計算字串中某些關鍵字的出現次數</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>做個筆記，省的每次都忘記XD  </p>
+<p>//被搜尋的字串<br>str1=”abcgdefgggg”<br>//關鍵字<br>key=”gg”<br>document.write(CountKeyword(str1,key));<br>function CountKeyword(str,keyword){<br> index = 0;<br> count = 0;<br> while (index!=-1){<br> index = str.indexOf(keyword,index);<br> if (index!=-1){<br> index = index + keyword.length;<br> count++;<br> }<br> }<br> return count;<br>}   </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2008/10/04/blog-post/" data-id="cjcnlghl8001bb3kys687xmbb" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jqueryonclick" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2008/06/09/jqueryonclick/" class="article-date">
+  <time datetime="2008-06-09T02:01:00.000Z" itemprop="datePublished">2008-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2008/06/09/jqueryonclick/">JQuery指定標籤onclick事件的問題</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在刻code要指定butoon的onclick屬性時，於是我寫了以下的code  </p>
+<pre><code>$(#test).attr(&quot;onclick&quot;,&quot;play()&quot;)  
+</code></pre><p>測試後發現，FF2可以執行，IE7不行…<br>後來突然想到雖然onclick也是寫在標籤中，但是他是事件不是屬性<br>於是把code改成  </p>
+<pre><code>$(&quot;#test&quot;).bind(&apos;click&apos;, function(){return play();});   
+</code></pre><p>就可以了XD<br>各位鄉親!code寫累的時候要起來走一走，動一動，眼睛左右各轉三十圈，才不會掉到自已挖的陷阱。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2008/06/09/jqueryonclick/" data-id="cjcnlghl8001ab3kytoie6xci" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ruby-on-rails-heroku" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2008/01/16/ruby-on-rails-heroku/" class="article-date">
+  <time datetime="2008-01-16T05:28:00.000Z" itemprop="datePublished">2008-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2008/01/16/ruby-on-rails-heroku/">線上開發Ruby on rails-Heroku</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Heroku這個網站很有趣，提供線上開發ROR的服務，還可以安裝Gem</p>
+<p>臨時有點子想實作或是到客戶那想秀一下這個網站是不錯的選擇，哈!</p>
+<p>有興趣的朋友可以用左方的MSN外掛或留言跟我索取邀請函<img src="http://s.blog.xuite.net/_image/emotion/m10.gif" alt=""></p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/15318917/0.jpg" alt=""></p>
+<p>下圖是寫code的地方，按Gem &amp; plugin的地方會引導到裝gem的地方</p>
+<p>編輯器的地方有定位不準的問題，讓人蠻困擾的  </p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/15318917/1.jpg" alt=""><br>裝Gems的頁面<br><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/15318917/2.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2008/01/16/ruby-on-rails-heroku/" data-id="cjcnlghl70019b3kye92yo8lu" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-sql-server-business-intelligence" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/12/26/sql-server-business-intelligence/" class="article-date">
+  <time datetime="2007-12-26T06:14:00.000Z" itemprop="datePublished">2007-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/12/26/sql-server-business-intelligence/">使用SQL Server Business Intelligence Development Studio匯到Access資料</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>把Access資料轉到SQLserver有很多方式，寫程式轉(很麻煩= =)、用Access2003的轉換精靈(不能更換資料表名稱，不能批次轉換，若Access<br>DB很少可以用這方法)  </p>
+<p>使用SQL Server Business Intelligence Development Studio雖然也是麻煩但設定檔設定完成後可以批次轉換所有Access資料庫，適合Access DB量大的時候  </p>
+<p><strong>開啟Microsoft Visual studio 2005 &gt; Microsoft Visual studio 2005</strong>  </p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14984786/0.jpg" alt="">  </p>
+<p><strong>專案 &gt; SSIS匯入和匯出精靈</strong></p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14984786/1.jpg" alt="">  </p>
+<p><strong>選擇資料來源Microsoft Access</strong></p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14984786/2.jpg" alt=""></p>
+<p><strong>選擇資料目的</strong></p>
+<p>**<img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14984786/3.jpg" alt="">  </p>
+<p>來源是Access的資料表，目的地是SQL的資料表，你可以把目的地的table 名稱改成你想要的**</p>
+<p><strong>然後按設定選先卸除再建立新目的資料表(如果SQLserver原本就有同樣名稱的資料表，轉檔時會發出錯誤，所以先移除同樣檔名的資料表)</strong></p>
+<p>**<img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14984786/4.gif" alt="">  </p>
+<p>Intelligence service會自動產生左邊紅框框的流程<br>卸除資料表SQL工作:如果有選擇先卸除再建立新目的資料表就會出現<br>準備SQL工作:會在SQL server中建立剛匯入的table schema，但是不會帶出原本的主鍵、外鍵等…= =<br>資料流程工作:設定access資料和sql資料的mapping**</p>
+<p>**<img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14984786/5.jpg" alt="">  </p>
+<p>因為準備SQL工作中，沒有主鍵等設定…所以自已加入，設定如下**</p>
+<p><strong>主鍵:</strong> PRIMARY KEY</p>
+<p><strong>欄位自動加1:</strong> IDENTITY (1, 1)</p>
+<p><strong>複數主鍵:</strong></p>
+<p>CONSTRAINT [PK_TABLE的名稱_site] PRIMARY KEY CLUSTERED </p>
+<p>(</p>
+<p>[主鍵欄位1] asc,</p>
+<p>[主鍵欄位2] asc</p>
+<p>)</p>
+<p><strong>範例:</strong></p>
+<p>CREATE TABLE [EOP-APP004].[dbo].[MCline] (</p>
+<p>[pr_id] int ,</p>
+<p>[seq] int,</p>
+<p>[planner_coder] nvarchar(10),</p>
+<p>[part_no] nvarchar(50),</p>
+<p>[part_desc] nvarchar(100),</p>
+<p>CONSTRAINT [PK_MCline_site] PRIMARY KEY CLUSTERED </p>
+<p>(</p>
+<p>[pr_id] ASC,</p>
+<p>[seq] asc</p>
+<p>)</p>
+<p>)</p>
+<p>GO</p>
+<p><strong>或是</strong></p>
+<p><strong>用access 2003的SQL轉換精靈先轉進一個暫時的資料庫</strong></p>
+<p>**<img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14984786/6.jpg" alt="">  </p>
+<p>然後用sql server2005的物件總管查看create table該table的語法**</p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14984786/7.jpg" alt="">  </p>
+<p><strong>把table的schema設好後，就是一個基本的轉檔script，你可以利用Intelligence Development Studio提供的其他工作再加上其他的功能。 
+</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/12/26/sql-server-business-intelligence/" data-id="cjcnlghl60018b3kycqf8k31p" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-in-sqlserver2005" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/12/26/in-sqlserver2005/" class="article-date">
+  <time datetime="2007-12-26T06:14:00.000Z" itemprop="datePublished">2007-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/12/26/in-sqlserver2005/">計算上班時間扣除六、日，中午休息時間in SQLServer2005</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因為找不到類似的東西所以自已寫了一個(總覺得又在亂打造輪子…)<br>把計算上班日的程式放到SQL處理，好處是效能好，可以直接用SQL做SUM、AVG等運算<br>想扣國定假日的話，可以把日期存在table再去比對，這部份我就沒寫了，有大大寫好的話請分享給我，謝謝，哈哈<br>函數名稱<br>GetWorkMinute(開始時間,結束時間) </p>
+<p>傳回值</p>
+<p>扣除星期六、日，午休，上班八小時以外的分鐘數</p>
+<p><strong>使用方式**</strong>:<br><em>*範例一<br>SELECT   dbo.GetWorkMinute(‘2007-12-19 17:17’,’2007-12-20 11:59’) as worktime<br>傳回:222   
+</em>呼叫自訂函數時要打全名不可省略dbo<br>程式碼:<br> –登入 DB<br>USE DB名稱;<br>GO<br>–如果有叫做dbo.GetWorkMinute的函數就移除它<br>IF OBJECT_ID (N’dbo.GetWorkMinute’, N’FN’) IS NOT NULL<br>    DROP FUNCTION dbo.GetWorkMinute;<br>GO<br>CREATE     FUNCTION GetWorkMinute<br>(<br>     @startDate DATETIME ,<br>     @endDate DATETIME<br>)<br>RETURNS int<br>AS<br>–程式開始的區塊，類似C、php的大括號<br>Begin<br>    –定義變數的保留字declare<br>    declare @DayMinute int,@s_Minute int,@s_Minute2 int,@i int,@x DATETIME,@resultMin int<br>     –值帶給變數的時候前面要加set<br>  set @DayMinute = 8<em>60    –1天上班小時<br>    set @s_Minute = 9</em>60     –早上點上班<br>    set @s_Minute2 = 18<em>60   –下午點下班<br>    declare @weekdays int,@totalDay int,@bgMin int,@endMin int<br>    set @i = 0<br>    if @startDate is not null and @endDate is not null<br>        set @weekdays = 0<br>        –計算申請日期和建置完成日期差幾天<br>        set @totalDay=DateDiff(day,@startDate,@endDate)<br>        –開始時間換算為分鐘<br>        set @bgMin=(DatePart(hour,@startDate)</em>60+DatePart(minute,@startDate))<br>        –建置完成時間換算成分鐘<br>        set @endMin=(DatePart(hour,@endDate)<em>60+DatePart(minute,@endDate))<br>        –取申請日期和建置日期中有幾個假日<br>        while  @i&lt;=DateDiff(day,@startDate,@endDate)<br>            begin<br>                set @x=DateAdd(day,@i,@startDate)<br>                if DatePart(weekday,@x)=1 or DatePart(weekday,@x)=7<br>                    set @weekdays=@weekdays+1<br>                    set @i=@i+1<br>            end<br>–計算總花費時間<br>–若申請時間、建置時間相隔超過一天<br>–    (公司下班時間- 申請時間) + (建置完成時間- 公司上班時間) + 中間相隔天數</em>8 <em>60 -日期區間中的六、日<br>–否則<br>–     建置時間- 開始時間<br>if @totalDay&gt;=1<br>    –跨天<br>    begin<br>        set @resultMin= abs(@s_Minute2-@bgMin)+abs(@endMin-@s_Minute)+((@totalDay-1)</em>@DayMinute)-(@weekdays*@DayMinute)<br>    end<br>else<br>    –同一天<br>    begin<br>        set @resultMin=abs(@endMin-@bgMin)<br>    end<br>–判斷有沒有經過中午，有的話扣掉中午休息時間<br>if @totalDay&gt;=1<br>    –跨天<br>    begin<br>        if  DatePart(hour,@startDate) <12 set="" @resultmin="@resultMin-60" if="" datepart(hour,@enddate)="">12<br>            set @resultMin=@resultMin-60<br>    end<br>else<br>    begin<br>        –同一天<br>        if   DatePart(hour,@startDate) <12 and="" datepart(hour,@enddate)="">12<br>            set @resultMin=@resultMin-60<br>    end<br>return @resultMin<br>END   </12></12></p>
+<hr>
+<p>如何在<strong>SQL server**</strong>中設定自訂函數**</p>
+<p>打開SQL server Management &gt;新增查詢&gt;貼入程式碼</p>
+<p>成功以後會出現在</p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14983814/0.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/12/26/in-sqlserver2005/" data-id="cjcnlghl40017b3kyu1lg0pmh" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-aspphpcode-sql-sql-server-management" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/12/26/aspphpcode-sql-sql-server-management/" class="article-date">
+  <time datetime="2007-12-26T04:37:00.000Z" itemprop="datePublished">2007-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/12/26/aspphpcode-sql-sql-server-management/">SQL server 2005自訂函數</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>因為要計算時間區間內沒有周休二日、午休時間的真正上班時間</p>
+</blockquote>
+<p>之前寫在asp、php裡感覺比較慢也覺得code不好維護。</p>
+<p>為什麼SQL沒有只抓上班時間的函數= =</p>
+<p>研究了一下自訂函數的方法，因為第一次接觸有錯請告訴我，謝謝</p>
+<p><strong>撰寫的位置:</strong></p>
+<p>登入SQL Server Management Studio後&gt;新增查詢</p>
+<p><strong>CODE:</strong></p>
+<p><strong>–登入你的DB</strong><br>USE Tbcwmonet;<br>GO<br><strong>–如果dbo.GetWorkMinute這個函已存在就刪掉</strong><br>IF OBJECT_ID (N’dbo.GetWorkMinute’, N’FN’) IS NOT NULL<br>    DROP FUNCTION dbo.GetWorkMinute;<br>GO<br>CREATE     FUNCTION GetWorkMinute<br>(<br>     @要帶入的值1 資料型態 ,<br>     @要傳入的值2 資料型態,<br>     @…………………………<br>)<br>RETURNS int<br>AS</p>
+<p>begin</p>
+<p>return @要傳回的值<br>end</p>
+<p><strong>說明</strong><br><strong>Begin….END:類似C、Java、PHP的大括號{、}用來把程式的區塊標出來   
+</strong></p>
+<blockquote>
+<p>EX:<br>(計算日期區間中的六、日有幾天)<br>while  @i&lt;=DateDiff(day,@startDate,@endDate)<br>   begin<br>    set @x=DateAdd(day,@i,@startDate)<br>    if DatePart(weekday,@x)=1 or DatePart(weekday,@x)=7<br>     set @weekdays=@weekdays+1<br>     set @i=@i+1<br>   end</p>
+</blockquote>
+<p><strong>變數要用declare宣告，並用@開頭，值給變數時要用set</strong></p>
+<blockquote>
+<p>EX:<br>declare @DayMinute int,@s_Minute DATETIME<br>set @DayMinute = 8*60<br>set @s_Date =”2008/01/01”</p>
+</blockquote>
+<p>寫完後按執行<br>SQL server 2005自訂函數會放在DB中&gt;可程式性&gt;函數&gt;純量值函數的資料夾中。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/12/26/aspphpcode-sql-sql-server-management/" data-id="cjcnlghl30016b3kyxndb9qgj" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-air-where-are-you" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/12/05/air-where-are-you/" class="article-date">
+  <time datetime="2007-12-05T07:15:00.000Z" itemprop="datePublished">2007-12-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/12/05/air-where-are-you/">第一次的Air程式-Where are you</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>起因是同事常到處亂跑，常找不到人所以寫了這支程式，不過寫了也沒人用，哈哈哈~</p>
+<p>功能:置換圖片，改變所在位置和描述，並有置頂、最小化關閉等功能</p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14685529/0.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/12/05/air-where-are-you/" data-id="cjcnlghl20014b3kyf8vb3l6h" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flex3php" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/12/05/flex3php/" class="article-date">
+  <time datetime="2007-12-05T07:00:00.000Z" itemprop="datePublished">2007-12-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/12/05/flex3php/">用Flex3+php上傳檔案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以下是flex3+php的上傳檔案範例，以Air的型式發佈也很方便</p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/14685282/0.jpg" alt=""></p>
+<p><a href="http://joehwang.myweb.hinet.net/xuite/flexupload.zip" target="_blank" rel="noopener"> 下載原始檔</a></p>
+<p>FLEX</p>
+<p>php  </p>
+<pre><code>$uploaddir = &apos;uploads/&apos;;  
+$uploadfile = $uploaddir . basename($_FILES[&apos;Filedata&apos;][&apos;name&apos;]);  
+$temploadfile = $_FILES[&apos;Filedata&apos;][&apos;tmp_name&apos;];  
+move_uploaded_file($temploadfile , $uploadfile);  
+?&gt;  
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/12/05/flex3php/" data-id="cjcnlghl20015b3ky4l6kg8fh" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ieinternet-explorerhttpxxxxxx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/11/30/ieinternet-explorerhttpxxxxxx/" class="article-date">
+  <time datetime="2007-11-30T10:43:00.000Z" itemprop="datePublished">2007-11-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/11/30/ieinternet-explorerhttpxxxxxx/">IE出現Internet Explorer無法開啟網際網路網站http://xxxxxx，操作已終止</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://bp2.blogger.com/_hl70JQ2zGqA/SEQIqTiD5KI/AAAAAAAABlg/EDDbFmo4_Cc/s1600-h/1.jpg" target="_blank" rel="noopener"><img src="http://bp2.blogger.com/_hl70JQ2zGqA/SEQIqTiD5KI/AAAAAAAABlg/EDDbFmo4_Cc/s400/1.jpg" alt=""></a><br><a href="http://bp1.blogger.com/_hl70JQ2zGqA/SEQIkDiD5JI/AAAAAAAABlY/sPuPWsAG63M/s1600-h/0.jpg" target="_blank" rel="noopener"><img src="http://bp1.blogger.com/_hl70JQ2zGqA/SEQIkDiD5JI/AAAAAAAABlY/sPuPWsAG63M/s400/0.jpg" alt=""></a><br>今天在IE試EXT的時候一直出現這個問題<br>但是Firefox一切正常，上google查了才知道<br>這是因為IE在頁面尚未載入完成時就執行了<br>EXT的Script<br>所以加上onReady就ok了!  </p>
+<p>Ext.onReady(function(){<br> Ext.MessageBox.alert(‘查無資料’, ‘對不起,無您所要查詢的資料’);<br> });  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/11/30/ieinternet-explorerhttpxxxxxx/" data-id="cjcnlghl10013b3kygj0rpi22" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-inlineblock" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/11/29/inlineblock/" class="article-date">
+  <time datetime="2007-11-28T22:02:00.000Z" itemprop="datePublished">2007-11-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/11/29/inlineblock/">inline和block</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Block Element:、、、…etc<br>Inline Element:、、…etc更多可參考<a href="http://big5.ce.cn/gate/big5/blog.ce.cn/html/28/106828-14009.html" target="_blank" rel="noopener">   http://big5.ce.cn/gate/big5/blog.ce.cn/html/28/106828-14009.html</a>  </p>
+<p>Inline特點是和其他元素在同一行顯示，而且height、padding、margin不得改變，寬度是內文或圖片的寬度也不可自行設定ex，block則完全相反，特點為從新的一行開始且width、height、padding、margin都可自行設定。可用display:block或display:inline的CSS屬性把inline元素切換為有block Element的性質，反之亦然。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/11/29/inlineblock/" data-id="cjcnlghky0012b3ky5r125y8a" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/">GCP</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/">docker</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/GCP-Container-Registry/">GCP Container Registry</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/">Jandi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/redmine/">redmine</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/rails/">rails</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/">link_to</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/">ssl</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/Https/">Https</a></li></ul></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">January 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">October 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/06/">June 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/01/">January 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/12/">December 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/11/">November 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/10/">October 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">September 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/08/">August 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/07/">July 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">June 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/05/">May 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/04/">April 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/02/">February 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">October 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/08/">August 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/07/">July 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/05/">May 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/04/">April 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/03/">March 2006</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/19/use-gcp-container-registry-to-establish-docker-private-registry/">使用GCP Container Registry建立docker private registry</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/23/rails51-and-webpacker/">rails5.1與webpacker</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/aws-api-gateway-notes/">AWS api gateway筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/1575726/">在aws Lambda上運行含binary的nodejs modules</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Joehwang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

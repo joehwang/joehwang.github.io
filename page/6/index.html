@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Joehwang.tw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Joehwang.tw">
+<meta property="og:url" content="http://blog.joehwang.net/page/6/index.html">
+<meta property="og:site_name" content="Joehwang.tw">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Joehwang.tw">
+  
+    <link rel="alternate" href="/atom.xml" title="Joehwang.tw" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Joehwang.tw</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.joehwang.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-aspactive-directory-server" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/12/29/aspactive-directory-server/" class="article-date">
+  <time datetime="2006-12-28T16:40:00.000Z" itemprop="datePublished">2006-12-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/12/29/aspactive-directory-server/">asp與Active Directory Server的互動</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>工作上需要解AD Account被鎖住的Web介面，使用MS提供的ADSI元件可以很方便的存取AD Server，以下為程式  </p>
+<p>function logintest()<br>‘登入測試<br>if sUser “” then<br> set oADSI = GetObject(“WinNT:”)<br> on error resume next<br> set oIIS = oADSI.OpenDSObject(“WinNT://AD server名稱” , sUser, sPassword,0)<br> if err.number = 0 then<br> Response.Write “Logon OK.<br>“<br> else<br> Response.Write “Logon failed.<br>“<br> end if<br>end if<br>end function  </p>
+<p>function ChgPWD()<br>Dim obj<br> set oADSI = GetObject(“WinNT:”)<br> set obj = oADSI.OpenDSObject(“WinNT://AD server名稱/“&amp;sAccount , sUser, sPassword,0)<br> ‘原密碼,新密碼<br> obj.ChangePassword “原來的密碼”, “新的密碼”  </p>
+<p> response.write “密碼已更新”<br>end function  </p>
+<p>function listmem()<br> ‘列出ad所有帳號<br> Dim obj<br> set oADSI = GetObject(“WinNT:”)<br> set obj = oADSI.OpenDSObject(“WinNT://AD server名稱”, sUser, sPassword,0)<br> for each aaa in obj<br> response.write aaa.name&amp;”<br>“<br> next<br>end function  </p>
+<p>function SetPWD()<br>‘reset密碼<br> Dim obj<br> set oADSI = GetObject(“WinNT:”)<br> set obj = oADSI.OpenDSObject(“WinNT://AD server名稱/“&amp;sAccount , sUser, sPassword,0)<br> obj.SetPassword “Kaubarcd0410”<br>end function  </p>
+<p>function setAccountDisable()<br>‘關掉該帳號<br> Dim obj<br> set oADSI = GetObject(“WinNT:”)<br> set obj = oADSI.OpenDSObject(“WinNT://AD server名稱/“&amp;sAccount , sUser, sPassword,0)<br> obj.AccountDisabled = true<br> obj.SetInfo<br> response.write “ok”<br>end function  </p>
+<p>function unlock()<br>‘解除鎖定的帳號<br> Dim obj<br> set oADSI = GetObject(“WinNT:”)<br> set obj = oADSI.OpenDSObject(“WinNT://AD server名稱/“&amp;sAccount , sUser, sPassword,0)<br> obj.IsAccountLocked = False<br> obj.SetInfo<br> response.write “ok”<br>end function  </p>
+<p>sUser=”AD server名稱/帳號名稱”<br>sPassword=”你的密碼”<br>‘要被作用的帳號=====<br>sAccount=”joe_huang”<br>‘===================  </p>
+<p>‘call listmem<br>call logintest<br>‘call SetPWD<br>‘call ChgPWD<br>‘call unlock  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/12/29/aspactive-directory-server/" data-id="cjcnlghka000hb3kyr96kjumm" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-net-20mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/10/27/net-20mysql/" class="article-date">
+  <time datetime="2006-10-26T16:27:00.000Z" itemprop="datePublished">2006-10-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/10/27/net-20mysql/">.net 2.0連結Mysql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在GOdaddy租了.net的虛擬主機，規格不錯價格也划算<br>我租的是沒有MSsql的版本，只能用mysql或access<br>godaddy提供了OleDB和ODBC的方法供.net連結mysql，不過我都試不出來orz…<br>到google搜尋了一下，發現多數人都用mysql專為.net寫的driver來連mysql db<br>方法如下<br>1.在專案中建立/bin資料夾<br>2.將MySql.Data.dll放置/bin資料夾<br>3.在程式中引用MySql.Data.dll(vb寫法:)<br>以下是code  </p>
+<p>檔案:<a href="http://joehwang.myweb.hinet.net/xuite/DonetAndMysql.zip" target="_blank" rel="noopener">http://joehwang.myweb.hinet.net/xuite/DonetAndMysql.zip</a>  </p>
+<pre><code>&lt;%@Page Language=&quot;VB&quot; CodePage=&quot;65001&quot; %&gt;  
+&lt;%@Import Namespace = &quot;MySql.Data.MySqlClient&quot; %&gt;  
+&lt;script runat=&quot;server&quot;&gt;  
+ Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)  
+ Dim myConn As MySqlConnection  
+ Dim myDataAdapter As MySqlDataAdapter  
+ Dim myDataSet As Data.DataSet  
+ Dim strSQL As String  
+ &apos;建立連接  
+ myConn = New MySqlConnection(&quot;server=mysql213.secureserver.net; user id=joehwang; password=b0410; database=joehwang;CHARSET=big5&quot;)  
+ myConn.Open()   
+ Dim mycmd As MySqlCommand  
+ mycmd = New MySqlCommand(&quot;Update member Set name = &apos;一&apos; where id = 1&quot;, myConn)  
+ mycmd.ExecuteNonQuery()   
+
+ strSQL = &quot;Select * FROM member;&quot;  
+ myDataAdapter = New MySqlDataAdapter(strSQL, myConn)  
+ myDataSet = New Data.DataSet  
+
+ myDataAdapter.Fill(myDataSet, &quot;mytable&quot;)  
+ GridView1.DataSource = myDataSet.Tables(&quot;mytable&quot;).DefaultView  
+ GridView1.DataBind()  
+ myConn.Close()  
+
+ End Sub  
+&lt;/script&gt;  
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;  
+&lt;head runat=&quot;server&quot; lang=&quot;zh-tw&quot;&gt;  
+ &lt;title&gt;未命名頁面&lt;/title&gt;   
+&lt;/head&gt;  
+&lt;body&gt;  
+ &lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;  
+ &lt;div&gt;  
+ &lt;asp:GridView ID=&quot;GridView1&quot; runat=&quot;server&quot; CellPadding=&quot;4&quot; ForeColor=&quot;#333333&quot; GridLines=&quot;None&quot;&gt;  
+ &lt;FooterStyle BackColor=&quot;#1C5E55&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;White&quot; /&gt;  
+ &lt;RowStyle BackColor=&quot;#E3EAEB&quot; /&gt;  
+ &lt;EditRowStyle BackColor=&quot;#7C6F57&quot; /&gt;  
+ &lt;SelectedRowStyle BackColor=&quot;#C5BBAF&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;#333333&quot; /&gt;  
+ &lt;PagerStyle BackColor=&quot;#666666&quot; ForeColor=&quot;White&quot; HorizontalAlign=&quot;Center&quot; /&gt;  
+ &lt;HeaderStyle BackColor=&quot;#1C5E55&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;White&quot; /&gt;  
+ &lt;AlternatingRowStyle BackColor=&quot;White&quot; /&gt;  
+ &lt;/asp:GridView&gt;  
+ &lt;br /&gt;  
+ 測試   
+ &lt;/div&gt;  
+ &lt;/form&gt;  
+&lt;/body&gt;  
+&lt;/html&gt;  
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/10/27/net-20mysql/" data-id="cjcnlghk8000gb3kyawhzvb2y" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flash" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/10/26/flash/" class="article-date">
+  <time datetime="2006-10-26T01:49:00.000Z" itemprop="datePublished">2006-10-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/10/26/flash/">Flash跨網域讀取資料</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>跨網域讀取資料<br><strong>AS:</strong></p>
+<p>System.security.loadPolicyFile(“<a href="http://cn.english.tw/include/forfestival/crossdomain.xml" target="_blank" rel="noopener">http://cn.english.tw/include/forfestival/crossdomain.xml</a>“);<br>//跨網域原則檔案<br>//此swf網域為tw.english21.us要跨網域讀取cn.english21.us，因此在<em>cn.english.tw/include/forfestival</em>裡要放crossdomain.xml<br>//crossdomain.xml上記載允許讀取的domain</p>
+<p><strong>crossdomain.xml:   
+</strong><br>//星號代表該網域全部允許</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/10/26/flash/" data-id="cjcnlghk7000eb3kydz0pnvvb" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flashwmaflashexternalinterfacemediaplay" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/10/13/flashwmaflashexternalinterfacemediaplay/" class="article-date">
+  <time datetime="2006-10-13T02:15:00.000Z" itemprop="datePublished">2006-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/10/13/flashwmaflashexternalinterfacemediaplay/">偽．flash播放器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>想來想去還是這標題最貼切<img src="http://s.blog.xuite.net/_image/emotion/m8.gif" alt=""><br>工作上要用flash播放wma，不過flash不支援，所以就用ExternalInterface呼叫mediaplayer物件，利用mediaplayer本身提供的方法控制囉，也因為mediaplayer物件的關係所以不能支援firefox。</p>
+<p><a href="http://joehwang.myweb.hinet.net/media/play.htm" target="_blank" rel="noopener">DEMO</a><br><a href="http://joehwang.myweb.hinet.net/media/flashmedia.zip" target="_blank" rel="noopener">Source</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/10/13/flashwmaflashexternalinterfacemediaplay/" data-id="cjcnlghk8000fb3kyp690kgaa" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-asp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/10/02/asp/" class="article-date">
+  <time datetime="2006-10-01T21:01:00.000Z" itemprop="datePublished">2006-10-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/10/02/asp/">最近在學寫ASP.net，感覺不錯! 不過既然datagrid有支援分頁怎麼datalist不順便支援? ...</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在學寫ASP.net，感覺不錯!<br>不過既然datagrid有支援分頁怎麼datalist不順便支援?<br>流程是Sqldatasource控制項→PagedDataSource控制項→DataList控制項<br>參考”廖瑞奇站長的文章-用Repeater分頁”撰寫以下程式  </p>
+<p>範例:<a href="http://vip.blueshop.com.tw/joehwang/flower/default.aspx" target="_blank" rel="noopener">http://vip.blueshop.com.tw/joehwang/flower/default.aspx</a><br>下載:<a href="http://joehwang.myweb.hinet.net/xuite/page_datalist.zip" target="_blank" rel="noopener">http://joehwang.myweb.hinet.net/xuite/page_datalist.zip</a>  </p>
+<p><strong><br>default.aspx</strong>  </p>
+<pre><code>&lt;%@ Page Language=&quot;VB&quot; %&gt;  
+
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;  
+
+&lt;script runat=&quot;server&quot;&gt;  
+
+ Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)  
+ Dim db1 As New SqlDataSource  
+ db1.ProviderName = &quot;System.Data.OleDb&quot;  
+ db1.ConnectionString = &quot;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|flower.mdb;&quot;  
+ db1.SelectCommand = &quot;select * from [flowers_plants]&quot;  
+ Dim dv As Data.DataView = db1.Select(New DataSourceSelectArguments)  
+
+
+ Dim Pgds As PagedDataSource = New PagedDataSource &apos;//宣告PagedDataSource分頁物件  
+ Pgds.DataSource = dv &apos;//將DataView寫入PagedDataSource  
+ Pgds.AllowPaging = True &apos;//是否分頁屬性  
+ Pgds.PageSize = 8 &apos;//一頁顯示幾筆紀錄  
+ Label1.Text = Pgds.PageCount.ToString() &apos;//總頁數  
+
+ &apos;//如果Request(&quot;page&quot;)沒有頁數等於第一頁  
+ Dim CurrentPage As Integer  
+ If Not Request.QueryString(&quot;Page&quot;) Is Nothing Then  
+ CurrentPage = Convert.ToInt32(Request.QueryString(&quot;Page&quot;))  
+ Else  
+ CurrentPage = 1  
+ End If  
+
+ Pgds.CurrentPageIndex = CurrentPage - 1  
+ Label1.Text = CurrentPage.ToString() &apos;//目前的頁數  
+
+ &apos;//若有上一頁  
+ If Not Pgds.IsFirstPage Then  
+ lnkPrev.NavigateUrl = Request.CurrentExecutionFilePath + &quot;?Page=&quot; + Convert.ToString(CurrentPage - 1)  
+ End If  
+
+ &apos;//若有下一頁  
+ If Not Pgds.IsLastPage Then  
+ lnkNext.NavigateUrl = Request.CurrentExecutionFilePath + &quot;?Page=&quot; + Convert.ToString(CurrentPage + 1)  
+ End If  
+
+
+ Me.DataList1.DataSource = Pgds &apos;把分頁物件的資料丟給datalist1顯示  
+ DataList1.RepeatColumns = 4&apos;設定行數  
+ DataList1.RepeatDirection = RepeatDirection.Horizontal  
+ &apos;Horizontal 清單的項目會由左而右，然後由上而下，以水平成列顯示，直到所有項目皆呈現。   
+ &apos; GridView1.AutoGenerateColumns = True  
+ Me.DataList1.DataBind()  
+
+ Dim i As Integer  
+ Dim oItem As New ListItem()  
+
+
+ For i = 1 To (Pgds.PageCount)  
+ oItem.Text = &quot;第&quot; &amp; i &amp; &quot;頁&quot;  
+ oItem.Value = &quot;default.aspx?page=&quot; &amp; i  
+ ddlist1.Items.Insert(i, New ListItem(oItem.Text, oItem.Value))  
+
+ Next i  
+ End Sub  
+
+
+ Protected Sub ddlist1_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)  
+ Label1.Text = ddlist1.SelectedItem.Value  
+ Response.Redirect(ddlist1.SelectedItem.Value)  
+ End Sub  
+&lt;/script&gt;  
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;  
+&lt;head runat=&quot;server&quot;&gt;  
+ &lt;title&gt;未命名頁面&lt;/title&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+ &lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;  
+ &lt;div align=center&gt;  
+ &amp;nbsp;&lt;asp:DropDownList ID=&quot;ddlist1&quot; runat=&quot;server&quot; OnSelectedIndexChanged=&quot;ddlist1_SelectedIndexChanged&quot; AutoPostBack=&quot;True&quot;&gt;  
+ &lt;asp:ListItem Value=&quot;新增&quot;&gt;請選擇&lt;/asp:ListItem&gt;  
+
+ &lt;/asp:DropDownList&gt;  
+ &lt;asp:DataList ID=&quot;DataList1&quot; runat=&quot;server&quot; CellPadding=&quot;3&quot; Width=&quot;152px&quot; BackColor=&quot;#DEBA84&quot; BorderColor=&quot;#DEBA84&quot; BorderStyle=&quot;None&quot; BorderWidth=&quot;1px&quot; CellSpacing=&quot;2&quot; GridLines=&quot;Both&quot;&gt;  
+ &lt;ItemTemplate&gt;  
+
+ &lt;a href=&quot;detail.aspx?id=&lt;%# DataBinder.Eval(Container.DataItem, &quot;fp_id&quot;) %&gt;&quot;&gt;&lt;img src=small/&lt;%# DataBinder.Eval(Container.DataItem, &quot;s_file&quot;) %&gt; /&gt;&lt;/a&gt;   
+&lt;/ItemTemplate&gt;   
+ &lt;FooterStyle BackColor=&quot;#F7DFB5&quot; ForeColor=&quot;#8C4510&quot; /&gt;  
+ &lt;SelectedItemStyle BackColor=&quot;#738A9C&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;White&quot; /&gt;  
+ &lt;ItemStyle BackColor=&quot;#FFF7E7&quot; ForeColor=&quot;#8C4510&quot; /&gt;  
+ &lt;HeaderStyle BackColor=&quot;#A55129&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;White&quot; /&gt;  
+ &lt;/asp:DataList&gt;&lt;/div&gt;  
+ &lt;div align=center&gt; 目前是第&lt;asp:Label ID=&quot;Label1&quot; runat=&quot;server&quot; Text=&quot;Label&quot;&gt;&lt;/asp:Label&gt;頁&lt;/div&gt;  
+ &lt;div align=center&gt;  
+ &lt;asp:HyperLink ID=&quot;lnkPrev&quot; runat=&quot;server&quot;&gt;上一頁&lt;/asp:HyperLink&gt;  
+ &lt;asp:HyperLink ID=&quot;lnkNext&quot; runat=&quot;server&quot;&gt;下一頁&lt;/asp:HyperLink&gt;  
+ &lt;/div&gt;  
+ &lt;/form&gt;  
+&lt;/body&gt;  
+&lt;/html&gt;  
+</code></pre><p><strong>detail.aspx </strong>  </p>
+<pre><code>&lt;%@ Page Language=&quot;VB&quot; %&gt;  
+
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;  
+
+&lt;script runat=&quot;server&quot;&gt;  
+
+ Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)  
+ Dim id As Integer  
+ id = Request.QueryString(&quot;id&quot;)  
+
+ Dim db1 As New SqlDataSource  
+ db1.ProviderName = &quot;System.Data.OleDb&quot;  
+ db1.ConnectionString = &quot;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|flower.mdb;&quot;  
+ db1.SelectCommand = &quot;select * from [flowers_plants] where fp_id= ? &quot;  
+ db1.SelectParameters.Add(&quot;fp_id&quot;, id)  
+ Dim dv As Data.DataView = db1.Select(New DataSourceSelectArguments)  
+ Me.FormView1.DataSource = dv  
+
+ Me.FormView1.DataBind()  
+ End Sub  
+
+
+&lt;/script&gt;  
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;  
+&lt;head runat=&quot;server&quot;&gt;  
+ &lt;title&gt;未命名頁面&lt;/title&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+ &lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;  
+ &lt;div align=center&gt;  
+ &lt;asp:FormView ID=&quot;FormView1&quot; runat=&quot;server&quot; BackColor=&quot;White&quot; BorderColor=&quot;#DEDFDE&quot; BorderStyle=&quot;None&quot; BorderWidth=&quot;1px&quot; CellPadding=&quot;4&quot; ForeColor=&quot;Black&quot; GridLines=&quot;Vertical&quot;&gt;  
+ &lt;ItemTemplate&gt;  
+
+ &lt;img src=small/&lt;%# DataBinder.Eval(Container.DataItem, &quot;s_file&quot;) %&gt; /&gt;&lt;br /&gt;  
+ ID:  
+ &lt;asp:Label ID=&quot;fp_idLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;fp_id&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+ 名稱：  
+ &lt;asp:Label ID=&quot;c_nameLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;c_name&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+ 學名：  
+ &lt;asp:Label ID=&quot;e_nameLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;e_name&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+ 家族：  
+ &lt;asp:Label ID=&quot;familyLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;family&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+ 別名：  
+ &lt;asp:Label ID=&quot;aliasLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;alias&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+ 科名：  
+ &lt;asp:Label ID=&quot;scientific_nameLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;scientific_name&quot;) %&gt;&apos;&gt;  
+ &lt;/asp:Label&gt;&lt;br /&gt;  
+ 類別  
+ &lt;asp:Label ID=&quot;classLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;class&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+
+ &lt;/ItemTemplate&gt;  
+ &lt;FooterStyle BackColor=&quot;#CCCC99&quot; /&gt;  
+ &lt;EditRowStyle BackColor=&quot;#CE5D5A&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;White&quot; /&gt;  
+ &lt;RowStyle BackColor=&quot;#F7F7DE&quot; /&gt;  
+ &lt;PagerStyle BackColor=&quot;#F7F7DE&quot; ForeColor=&quot;Black&quot; HorizontalAlign=&quot;Right&quot; /&gt;  
+ &lt;HeaderStyle BackColor=&quot;#6B696B&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;White&quot; /&gt;  
+
+
+ &lt;/asp:FormView&gt;  
+
+ &lt;/div&gt;  
+ &lt;/form&gt;  
+&lt;/body&gt;  
+&lt;/html&gt;  
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/10/02/asp/" data-id="cjcnlghk6000db3kyz3mem75m" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mmug-function-test-var-fso" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/08/01/mmug-function-test-var-fso/" class="article-date">
+  <time datetime="2006-08-01T15:20:00.000Z" itemprop="datePublished">2006-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/08/01/mmug-function-test-var-fso/">用Javascript呼叫ActiveX(IE only)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在MMUG上看到的，雖然會有安全性警告，不過還是可用!  </p>
+<p>原文:<a href="http://mmug.com.tw/forum/viewtopic.php?t=9142&amp;sid=63b4762325a9e8c077bdd20fc4ab86f3" target="_blank" rel="noopener">http://mmug.com.tw/forum/viewtopic.php?t=9142&amp;sid=63b4762325a9e8c077bdd20fc4ab86f3</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/08/01/mmug-function-test-var-fso/" data-id="cjcnlghk5000cb3ky5w8mokqa" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog-post" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/08/01/blog-post/" class="article-date">
+  <time datetime="2006-07-31T23:58:00.000Z" itemprop="datePublished">2006-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/08/01/blog-post/">查詢時改變資料型態</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>兩個資料表做join的時候，連接兩個資料表的欄位資料型態不同會發生錯誤，這時可用<strong>CONVERT(資料型態,要改變的欄位)</strong>來改變資料型態。</p>
+<p>圖:</p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/7509474/7509474_0.jpg" alt=""></p>
+<hr>
+<p>2008/6/5</p>
+<p>也可以用CAST改變，效果相同</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/08/01/blog-post/" data-id="cjcnlghk4000bb3kyl8zw9u95" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog-post" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/07/19/blog-post/" class="article-date">
+  <time datetime="2006-07-18T19:13:00.000Z" itemprop="datePublished">2006-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/07/19/blog-post/">自訂停駐點位置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有時按Tab鍵切換物件，希望自訂順序可用tabIndex指定，以下為範例</p>
+<p>//creative三個文字框<br>this.createTextField(“a1”, this.getNextHighestDepth(), 10, 10, 130, 22);<br>a1.border = true;<br>a1.type = “input”;<br>a1.text=”我是a1，請點我開始”<br>this.createTextField(“a2”, this.getNextHighestDepth(), 10, 40, 130, 22);<br>a2.border = true;<br>a2.type = “input”;<br>a2.text=”我是a2”<br>this.createTextField(“a3”, this.getNextHighestDepth(), 10, 70, 130, 22);<br>a3.border = true;<br>a3.type = “input”;<br>a3.text=”我是a3”<br>//設定三個文字框focus順序<br>a1.tabIndex =1;<br>a2.tabIndex =3;<br>a3.tabIndex =2;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/07/19/blog-post/" data-id="cjcnlghk3000ab3ky76w3p8lu" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flash-loadvarsxml" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/07/16/flash-loadvarsxml/" class="article-date">
+  <time datetime="2006-07-16T02:32:00.000Z" itemprop="datePublished">2006-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/07/16/flash-loadvarsxml/">Flash取資料庫資料-以Loadvars及XML為例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>要以Flash顯示資料庫資料可用<strong>Loadvars</strong>或<strong>XML、Flash Remoting</strong>，在這以LoadVars、XML為例，LoadVars和XML運作原理大同小異，送參數觸發伺服器上的程式(ASP、PHP、JSP)連接資料庫。不同點僅在於傳回資料描述的方式不同，Loadvars用”變數=值&amp;變數=值”…..變數中間以&amp;符號連結<br>如:<strong>id=6&amp;name1=Michael&amp;address=**</strong>Coventry House Miner Rd.<br>**而XML當然以XML的方式描述，以下為範例:</p>
+<p> Loadvars ASP-engine2.asp<br>            &lt;%@LANGUAGE=”VBSCRIPT” CODEPAGE=”65001”%&gt;<br>            ‘隨機選題目並輸出為XML<br>            <!--#include file="connectDB.asp"--><br>            &lt;%<br>            Response.Expires=-1500<br>            Response.CacheControl=”no-cache”<br>            ‘禁止快取<br>            id=request(“id”)<br>            set rs=server.CreateObject(“ADODB.Recordset”)<br>            if id=”” then’若沒帶參數過來便亂數取一筆record<br>             sql=”select <em> from Employees ORDER BY NEWID()”<br>            else<br>             ‘取第三筆record<br>             sql=”select </em> from Employees where EmployeeID=”&amp;id<br>            end if<br>            rs.Open sql , conn , 3 , 1<br>            name=rs(“FirstName”)<br>            response.write “id=”&amp;rs(“EmployeeID”)&amp;”&amp;”<br>            response.write “name1=”&amp;rs(“FirstName”)&amp;”&amp;”<br>            response.write “address=”&amp;rs(“Address”)<br>            rs.close<br>            %&gt;  </p>
+<p>Flash-a.swf  </p>
+<pre><code>//準備一個按鈕並命名為star_btn三個動態輸入文字框變數設為id、name1、address  
+//在第一個影格寫上  
+star_btn.onPress=function(){   
+ var loadasp:LoadVars=new LoadVars();  
+ loadasp.onLoad=myfun;  
+ loadasp.load(&quot;http://60.248.36.151/temp/joehwang/engine2.asp&quot;);  
+
+ function myfun(){  
+ trace(&quot;load ok&quot;);  
+ trace(loadasp.name1);  
+ id=loadasp.id;  
+ name1=loadasp.name1;  
+ address=loadasp.address;  
+ }   
+}  
+</code></pre><p>XML  </p>
+<p>asp-engine.asp  </p>
+<pre><code>&apos;與ajax連接資料庫範例相同  
+&lt;%@LANGUAGE=&quot;VBSCRIPT&quot; CODEPAGE=&quot;65001&quot;%&gt;  
+&lt;%&apos;隨機選題目並輸出為XML%&gt;  
+&lt;!--#include file=&quot;connectDB.asp&quot;--&gt;  
+&lt;%  
+Response.Expires=-1500  
+Response.CacheControl=&quot;no-cache&quot;  
+&apos;禁止快取  
+id=request(&quot;id&quot;)  
+set rs=server.CreateObject(&quot;ADODB.Recordset&quot;)  
+if id=&quot;&quot; then&apos;若沒帶參數過來便亂數取一筆record  
+ sql=&quot;select * from Employees ORDER BY NEWID()&quot;  
+else  
+ &apos;取第三筆record  
+ sql=&quot;select * from Employees where EmployeeID=&quot;&amp;id  
+end if  
+rs.Open sql , conn , 3 , 1  
+Response.ContentType=&quot;text/xml&quot;&apos;將文件編碼指定為XML格式，asp產生xml格式時必加  
+response.write &quot;&lt;?xml version=&quot;&amp;chr(34)&amp;&quot;1.0&quot;&amp;chr(34)&amp;&quot; encoding=&quot;&amp;chr(34)&amp;&quot;utf-8&quot;&amp;chr(34)&amp;&quot;?&gt;&quot;  
+response.write &quot;&lt;areas&gt;&quot;  
+response.write &quot;&lt;id&gt;&quot;&amp;rs(&quot;EmployeeID&quot;)&amp;&quot;&lt;/id&gt;&quot;  
+response.write &quot;&lt;name&gt;&quot;&amp;rs(&quot;FirstName&quot;)&amp;&quot;&lt;/name&gt;&quot;  
+response.write &quot;&lt;address&gt;&quot;&amp;rs(&quot;Address&quot;)&amp;&quot;&lt;/address&gt;&quot;  
+response.write &quot;&lt;/areas&gt;&quot;  
+rs.close  
+%&gt;  
+</code></pre><p>Flash-xmla.swf  </p>
+<pre><code>//準備一個按鈕並命名為star_btn四個動態輸入文字框變數設為id、name1、address、loading  
+//在第一個影格寫上  
+star_btn.onPress=function(){  
+ loading=&quot;loading.....&quot;;  
+ var myxml:XML=new XML();  
+ myxml.ignoreWhite=true;  
+ myxml.onLoad=myfun;  
+ myxml.load(&quot;http://60.248.36.151/temp/joehwang/engine.asp&quot;);   
+
+ function myfun(){   
+ id=myxml.firstChild.childNodes[0].childNodes[0];  
+ name1=myxml.firstChild.childNodes[1].childNodes[0];  
+ address=myxml.firstChild.childNodes[2].childNodes[0];  
+ loading=&quot;&quot;;  
+ }   
+}  
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/07/16/flash-loadvarsxml/" data-id="cjcnlghk30009b3kyn5lk5d3u" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ajax" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/07/09/ajax/" class="article-date">
+  <time datetime="2006-07-08T19:34:00.000Z" itemprop="datePublished">2006-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/07/09/ajax/">AJAX範例-取後端資料庫資料</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近工作上用到了XMLHttpRequest()，感覺不錯，以下是範例<br>參考中興大學資管系 呂瑞麟教授的文件寫的<br>範例網址:<a href="http://60.248.36.151/Temp/joehwang/ajax.asp" target="_blank" rel="noopener">http://60.248.36.151/Temp/joehwang/ajax.asp</a>  </p>
+<p>主程式:ajax.asp  </p>
+<pre><code>&lt;%@LANGUAGE=&quot;VBSCRIPT&quot; CODEPAGE=&quot;65001&quot;%&gt;  
+&lt;html&gt;  
+&lt;head&gt;  
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;  
+&lt;style type=&quot;text/css&quot;&gt;  
+&lt;!--  
+.boder {  
+ border-bottom-color: #808080;  
+}  
+.loading2 {  
+ font-family: Arial, Helvetica, sans-serif;  
+ font-size: 12px;  
+ background-color: #FFFFAA;  
+ position: absolute;  
+ padding: 1px;  
+ display:none;  
+
+}  
+--&gt;  
+&lt;/style&gt;  
+&lt;title&gt;AJAX試驗&lt;/title&gt;&lt;table width=&quot;27%&quot; border=&quot;1&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;  
+ &lt;tr&gt;  
+ &lt;td width=&quot;9%&quot;&gt;ID &lt;div id=&quot;loading1&quot; class=&quot;loading2&quot;&gt;載入中&lt;/div&gt;&lt;/td&gt;  
+ &lt;td width=&quot;91%&quot;&gt;&amp;nbsp;&lt;span class=&quot;boder&quot; id=&quot;id&quot;&gt; &lt;!--顯示id--&gt;&lt;/span&gt;&lt;/td&gt;  
+ &lt;/tr&gt;  
+ &lt;tr&gt;  
+ &lt;td&gt;Name&lt;/td&gt;  
+ &lt;td&gt;&amp;nbsp;&lt;span class=&quot;boder&quot; id=&quot;name&quot;&gt;&lt;!--顯示name--&gt;&lt;/span&gt;&lt;/td&gt;  
+ &lt;/tr&gt;  
+ &lt;tr&gt;  
+ &lt;td&gt;Address&lt;/td&gt;  
+ &lt;td&gt;&amp;nbsp;&lt;span class=&quot;boder&quot; id=&quot;address&quot;&gt;&lt;!--顯示address--&gt;&lt;/span&gt;&lt;/td&gt;  
+ &lt;/tr&gt;  
+&lt;/table&gt;  
+&lt;p&gt;&lt;a href=&quot;javascript:makeRequest(&apos;get&apos;);&quot;&gt;下一則 &lt;/a&gt;&lt;/p&gt;  
+&lt;p&gt;&lt;a href=&quot;javascript:makeRequest(&apos;post&apos;);&quot;&gt;指定第三筆Record&lt;/a&gt;&lt;/p&gt;  
+&lt;/body&gt;  
+&lt;/head&gt;  
+&lt;/html&gt;  
+&lt;script type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;  
+ function makeRequest(x) {  
+ document.getElementById(&quot;loading1&quot;).style.display=&quot;block&quot;;  
+ var http_request = false;  
+ if (window.XMLHttpRequest) { // Mozilla, Safari,...  
+ http_request = new XMLHttpRequest();  
+ } else if (window.ActiveXObject) { // IE  
+ try {  
+ http_request = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);  
+ } catch (e) {  
+ try {  
+ http_request = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);  
+ } catch (e) {}  
+ }  
+ }  
+ if (!http_request) {  
+ alert(&apos;Giving up :( Cannot create an XMLHTTP instance&apos;);  
+ return false;  
+ }  
+ // 定義事件處理函數為 alterContents()  
+ http_request.onreadystatechange = function() {   
+ alertContents(http_request);   
+//共有五個階段  
+//0 (尚未初始化;)   
+//1 (載入中; http_request 已經設定好了，但是還沒呼叫 send())   
+//2 (載入完成; http_request 已經送給 server 了，server 已經開始 處理了，你可以取得 content header 了。)   
+//3 (可以互動的; http_request 已經部份完成了，所以有可能取得 部份處理完的資料)   
+//4 (完成的; compelte)   
+ };  
+
+ switch(x){  
+ case &apos;get&apos;:  
+ http_request.open(&apos;GET&apos;, &quot;engine.asp&quot;, true);  
+ http_request.send(null);  
+ break;  
+ case &apos;post&apos;:  
+http_request.open(&apos;POST&apos;, &apos;engine.asp&apos;, true);  
+//HTTP的方法可用POST或GET,目標網頁(不能跨domain),是否非同步(非同步的意思是代表在跟遠端取得資源的同時，browser 可以繼續執行 Javascript 的內容)因為大都設為true(非同步)  
+http_request.setRequestHeader(&apos;Content-Type&apos;, &apos;application/x-www-form-urlencoded&apos;);  
+//如果使用 POST 的方式，我們除了要設定 MIME 的類型  
+ http_request.send(&apos;id=3&apos;);  
+//送參數，若有兩個以上參數可用http_request.send(&apos;id=3&amp;aa=5&apos;);  
+//若要把變數當成參數可用http_request.send(&apos;id=&apos;+變數+&apos;&amp;aa=&apos;+變數);  
+ break;  
+ }  
+ }  
+
+ function alertContents(http_request) {  
+ if (http_request.readyState == 4) {  
+ if (http_request.status == 200) {  
+ var xmldoc = http_request.responseXML;//宣告xml物件  
+ var id_node = xmldoc.getElementsByTagName(&apos;id&apos;);  
+//設定要取的節點，會以陣列傳回  
+ var name_node = xmldoc.getElementsByTagName(&apos;name&apos;);  
+ var addr_node = xmldoc.getElementsByTagName(&apos;address&apos;);  
+ document.getElementById(&quot;id&quot;).innerHTML=id_node[0].firstChild.nodeValue  
+//取節點的值  
+ document.getElementById(&quot;name&quot;).innerHTML=name_node[0].firstChild.nodeValue  
+ document.getElementById(&quot;address&quot;).innerHTML=addr_node[0].firstChild.nodeValue   
+ document.getElementById(&quot;loading1&quot;).style.display=&quot;none&quot;;//關掉loading的div標籤  
+ } else   
+ {  
+ alert(&apos;There was a problem with the request.&apos;);  
+ }  
+ }  
+ }  
+&lt;/script&gt;  
+</code></pre><p>對資料庫做查詢的程式:engine.asp  </p>
+<pre><code>&lt;%@LANGUAGE=&quot;VBSCRIPT&quot; CODEPAGE=&quot;65001&quot;%&gt;  
+&lt;%&apos;隨機選題目並輸出為XML%&gt;  
+&lt;!--#include file=&quot;connectDB.asp&quot;--&gt;  
+&lt;%  
+Response.Expires=-1500  
+Response.CacheControl=&quot;no-cache&quot;  
+&apos;禁止快取  
+id=request(&quot;id&quot;)  
+set rs=server.CreateObject(&quot;ADODB.Recordset&quot;)  
+if id=&quot;&quot; then  
+&apos;若沒帶參數過來便亂數取一筆record  
+ sql=&quot;select * from Employees ORDER BY NEWID()&quot;  
+else  
+ &apos;取第三筆record  
+ sql=&quot;select * from Employees where EmployeeID=&quot;&amp;id  
+end if  
+rs.Open sql , conn , 3 , 1  
+Response.ContentType=&quot;text/xml&quot;  
+&apos;將文件編碼指定為XML格式，asp產生xml格式時必加  
+response.write &quot;&lt;?xml version=&quot;&amp;chr(34)&amp;&quot;1.0&quot;&amp;chr(34)&amp;&quot; encoding=&quot;&amp;chr(34)&amp;&quot;utf-8&quot;&amp;chr(34)&amp;&quot;?&gt;&quot;  
+response.write &quot;&lt;areas&gt;&quot;  
+response.write &quot;&lt;id&gt;&quot;&amp;rs(&quot;EmployeeID&quot;)&amp;&quot;&lt;/id&gt;&quot;  
+response.write &quot;&lt;name&gt;&quot;&amp;rs(&quot;FirstName&quot;)&amp;&quot;&lt;/name&gt;&quot;  
+response.write &quot;&lt;address&gt;&quot;&amp;rs(&quot;Address&quot;)&amp;&quot;&lt;/address&gt;&quot;  
+response.write &quot;&lt;/areas&gt;&quot;  
+rs.close  
+%&gt;  
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/07/09/ajax/" data-id="cjcnlghk10008b3ky706mlzvm" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/">GCP</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/">docker</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/GCP-Container-Registry/">GCP Container Registry</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/">Jandi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/redmine/">redmine</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/rails/">rails</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/">link_to</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/">ssl</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/Https/">Https</a></li></ul></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">January 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">October 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/06/">June 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/01/">January 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/12/">December 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/11/">November 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/10/">October 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">September 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/08/">August 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/07/">July 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">June 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/05/">May 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/04/">April 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/02/">February 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">October 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/08/">August 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/07/">July 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/05/">May 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/04/">April 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/03/">March 2006</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/19/use-gcp-container-registry-to-establish-docker-private-registry/">使用GCP Container Registry建立docker private registry</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/23/rails51-and-webpacker/">rails5.1與webpacker</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/aws-api-gateway-notes/">AWS api gateway筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/1575726/">在aws Lambda上運行含binary的nodejs modules</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Joehwang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

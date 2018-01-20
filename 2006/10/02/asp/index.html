@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>最近在學寫ASP.net，感覺不錯! 不過既然datagrid有支援分頁怎麼datalist不順便支援? ... | Joehwang.tw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近在學寫ASP.net，感覺不錯!不過既然datagrid有支援分頁怎麼datalist不順便支援?流程是Sqldatasource控制項→PagedDataSource控制項→DataList控制項參考”廖瑞奇站長的文章-用Repeater分頁”撰寫以下程式   範例:http://vip.blueshop.com.tw/joehwang/flower/default.aspx下載:http:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最近在學寫ASP.net，感覺不錯! 不過既然datagrid有支援分頁怎麼datalist不順便支援? ...">
+<meta property="og:url" content="http://blog.joehwang.net/2006/10/02/asp/index.html">
+<meta property="og:site_name" content="Joehwang.tw">
+<meta property="og:description" content="最近在學寫ASP.net，感覺不錯!不過既然datagrid有支援分頁怎麼datalist不順便支援?流程是Sqldatasource控制項→PagedDataSource控制項→DataList控制項參考”廖瑞奇站長的文章-用Repeater分頁”撰寫以下程式   範例:http://vip.blueshop.com.tw/joehwang/flower/default.aspx下載:http:">
+<meta property="og:updated_time" content="2018-01-19T16:02:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最近在學寫ASP.net，感覺不錯! 不過既然datagrid有支援分頁怎麼datalist不順便支援? ...">
+<meta name="twitter:description" content="最近在學寫ASP.net，感覺不錯!不過既然datagrid有支援分頁怎麼datalist不順便支援?流程是Sqldatasource控制項→PagedDataSource控制項→DataList控制項參考”廖瑞奇站長的文章-用Repeater分頁”撰寫以下程式   範例:http://vip.blueshop.com.tw/joehwang/flower/default.aspx下載:http:">
+  
+    <link rel="alternate" href="/atom.xml" title="Joehwang.tw" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Joehwang.tw</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.joehwang.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-asp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/10/02/asp/" class="article-date">
+  <time datetime="2006-10-01T21:01:00.000Z" itemprop="datePublished">2006-10-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      最近在學寫ASP.net，感覺不錯! 不過既然datagrid有支援分頁怎麼datalist不順便支援? ...
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在學寫ASP.net，感覺不錯!<br>不過既然datagrid有支援分頁怎麼datalist不順便支援?<br>流程是Sqldatasource控制項→PagedDataSource控制項→DataList控制項<br>參考”廖瑞奇站長的文章-用Repeater分頁”撰寫以下程式  </p>
+<p>範例:<a href="http://vip.blueshop.com.tw/joehwang/flower/default.aspx" target="_blank" rel="noopener">http://vip.blueshop.com.tw/joehwang/flower/default.aspx</a><br>下載:<a href="http://joehwang.myweb.hinet.net/xuite/page_datalist.zip" target="_blank" rel="noopener">http://joehwang.myweb.hinet.net/xuite/page_datalist.zip</a>  </p>
+<p><strong><br>default.aspx</strong>  </p>
+<pre><code>&lt;%@ Page Language=&quot;VB&quot; %&gt;  
+
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;  
+
+&lt;script runat=&quot;server&quot;&gt;  
+
+ Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)  
+ Dim db1 As New SqlDataSource  
+ db1.ProviderName = &quot;System.Data.OleDb&quot;  
+ db1.ConnectionString = &quot;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|flower.mdb;&quot;  
+ db1.SelectCommand = &quot;select * from [flowers_plants]&quot;  
+ Dim dv As Data.DataView = db1.Select(New DataSourceSelectArguments)  
+
+
+ Dim Pgds As PagedDataSource = New PagedDataSource &apos;//宣告PagedDataSource分頁物件  
+ Pgds.DataSource = dv &apos;//將DataView寫入PagedDataSource  
+ Pgds.AllowPaging = True &apos;//是否分頁屬性  
+ Pgds.PageSize = 8 &apos;//一頁顯示幾筆紀錄  
+ Label1.Text = Pgds.PageCount.ToString() &apos;//總頁數  
+
+ &apos;//如果Request(&quot;page&quot;)沒有頁數等於第一頁  
+ Dim CurrentPage As Integer  
+ If Not Request.QueryString(&quot;Page&quot;) Is Nothing Then  
+ CurrentPage = Convert.ToInt32(Request.QueryString(&quot;Page&quot;))  
+ Else  
+ CurrentPage = 1  
+ End If  
+
+ Pgds.CurrentPageIndex = CurrentPage - 1  
+ Label1.Text = CurrentPage.ToString() &apos;//目前的頁數  
+
+ &apos;//若有上一頁  
+ If Not Pgds.IsFirstPage Then  
+ lnkPrev.NavigateUrl = Request.CurrentExecutionFilePath + &quot;?Page=&quot; + Convert.ToString(CurrentPage - 1)  
+ End If  
+
+ &apos;//若有下一頁  
+ If Not Pgds.IsLastPage Then  
+ lnkNext.NavigateUrl = Request.CurrentExecutionFilePath + &quot;?Page=&quot; + Convert.ToString(CurrentPage + 1)  
+ End If  
+
+
+ Me.DataList1.DataSource = Pgds &apos;把分頁物件的資料丟給datalist1顯示  
+ DataList1.RepeatColumns = 4&apos;設定行數  
+ DataList1.RepeatDirection = RepeatDirection.Horizontal  
+ &apos;Horizontal 清單的項目會由左而右，然後由上而下，以水平成列顯示，直到所有項目皆呈現。   
+ &apos; GridView1.AutoGenerateColumns = True  
+ Me.DataList1.DataBind()  
+
+ Dim i As Integer  
+ Dim oItem As New ListItem()  
+
+
+ For i = 1 To (Pgds.PageCount)  
+ oItem.Text = &quot;第&quot; &amp; i &amp; &quot;頁&quot;  
+ oItem.Value = &quot;default.aspx?page=&quot; &amp; i  
+ ddlist1.Items.Insert(i, New ListItem(oItem.Text, oItem.Value))  
+
+ Next i  
+ End Sub  
+
+
+ Protected Sub ddlist1_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)  
+ Label1.Text = ddlist1.SelectedItem.Value  
+ Response.Redirect(ddlist1.SelectedItem.Value)  
+ End Sub  
+&lt;/script&gt;  
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;  
+&lt;head runat=&quot;server&quot;&gt;  
+ &lt;title&gt;未命名頁面&lt;/title&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+ &lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;  
+ &lt;div align=center&gt;  
+ &amp;nbsp;&lt;asp:DropDownList ID=&quot;ddlist1&quot; runat=&quot;server&quot; OnSelectedIndexChanged=&quot;ddlist1_SelectedIndexChanged&quot; AutoPostBack=&quot;True&quot;&gt;  
+ &lt;asp:ListItem Value=&quot;新增&quot;&gt;請選擇&lt;/asp:ListItem&gt;  
+
+ &lt;/asp:DropDownList&gt;  
+ &lt;asp:DataList ID=&quot;DataList1&quot; runat=&quot;server&quot; CellPadding=&quot;3&quot; Width=&quot;152px&quot; BackColor=&quot;#DEBA84&quot; BorderColor=&quot;#DEBA84&quot; BorderStyle=&quot;None&quot; BorderWidth=&quot;1px&quot; CellSpacing=&quot;2&quot; GridLines=&quot;Both&quot;&gt;  
+ &lt;ItemTemplate&gt;  
+
+ &lt;a href=&quot;detail.aspx?id=&lt;%# DataBinder.Eval(Container.DataItem, &quot;fp_id&quot;) %&gt;&quot;&gt;&lt;img src=small/&lt;%# DataBinder.Eval(Container.DataItem, &quot;s_file&quot;) %&gt; /&gt;&lt;/a&gt;   
+&lt;/ItemTemplate&gt;   
+ &lt;FooterStyle BackColor=&quot;#F7DFB5&quot; ForeColor=&quot;#8C4510&quot; /&gt;  
+ &lt;SelectedItemStyle BackColor=&quot;#738A9C&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;White&quot; /&gt;  
+ &lt;ItemStyle BackColor=&quot;#FFF7E7&quot; ForeColor=&quot;#8C4510&quot; /&gt;  
+ &lt;HeaderStyle BackColor=&quot;#A55129&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;White&quot; /&gt;  
+ &lt;/asp:DataList&gt;&lt;/div&gt;  
+ &lt;div align=center&gt; 目前是第&lt;asp:Label ID=&quot;Label1&quot; runat=&quot;server&quot; Text=&quot;Label&quot;&gt;&lt;/asp:Label&gt;頁&lt;/div&gt;  
+ &lt;div align=center&gt;  
+ &lt;asp:HyperLink ID=&quot;lnkPrev&quot; runat=&quot;server&quot;&gt;上一頁&lt;/asp:HyperLink&gt;  
+ &lt;asp:HyperLink ID=&quot;lnkNext&quot; runat=&quot;server&quot;&gt;下一頁&lt;/asp:HyperLink&gt;  
+ &lt;/div&gt;  
+ &lt;/form&gt;  
+&lt;/body&gt;  
+&lt;/html&gt;  
+</code></pre><p><strong>detail.aspx </strong>  </p>
+<pre><code>&lt;%@ Page Language=&quot;VB&quot; %&gt;  
+
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;  
+
+&lt;script runat=&quot;server&quot;&gt;  
+
+ Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)  
+ Dim id As Integer  
+ id = Request.QueryString(&quot;id&quot;)  
+
+ Dim db1 As New SqlDataSource  
+ db1.ProviderName = &quot;System.Data.OleDb&quot;  
+ db1.ConnectionString = &quot;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|flower.mdb;&quot;  
+ db1.SelectCommand = &quot;select * from [flowers_plants] where fp_id= ? &quot;  
+ db1.SelectParameters.Add(&quot;fp_id&quot;, id)  
+ Dim dv As Data.DataView = db1.Select(New DataSourceSelectArguments)  
+ Me.FormView1.DataSource = dv  
+
+ Me.FormView1.DataBind()  
+ End Sub  
+
+
+&lt;/script&gt;  
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;  
+&lt;head runat=&quot;server&quot;&gt;  
+ &lt;title&gt;未命名頁面&lt;/title&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+ &lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;  
+ &lt;div align=center&gt;  
+ &lt;asp:FormView ID=&quot;FormView1&quot; runat=&quot;server&quot; BackColor=&quot;White&quot; BorderColor=&quot;#DEDFDE&quot; BorderStyle=&quot;None&quot; BorderWidth=&quot;1px&quot; CellPadding=&quot;4&quot; ForeColor=&quot;Black&quot; GridLines=&quot;Vertical&quot;&gt;  
+ &lt;ItemTemplate&gt;  
+
+ &lt;img src=small/&lt;%# DataBinder.Eval(Container.DataItem, &quot;s_file&quot;) %&gt; /&gt;&lt;br /&gt;  
+ ID:  
+ &lt;asp:Label ID=&quot;fp_idLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;fp_id&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+ 名稱：  
+ &lt;asp:Label ID=&quot;c_nameLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;c_name&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+ 學名：  
+ &lt;asp:Label ID=&quot;e_nameLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;e_name&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+ 家族：  
+ &lt;asp:Label ID=&quot;familyLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;family&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+ 別名：  
+ &lt;asp:Label ID=&quot;aliasLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;alias&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+ 科名：  
+ &lt;asp:Label ID=&quot;scientific_nameLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;scientific_name&quot;) %&gt;&apos;&gt;  
+ &lt;/asp:Label&gt;&lt;br /&gt;  
+ 類別  
+ &lt;asp:Label ID=&quot;classLabel&quot; runat=&quot;server&quot; Text=&apos;&lt;%# Bind(&quot;class&quot;) %&gt;&apos;&gt;&lt;/asp:Label&gt;&lt;br /&gt;  
+
+ &lt;/ItemTemplate&gt;  
+ &lt;FooterStyle BackColor=&quot;#CCCC99&quot; /&gt;  
+ &lt;EditRowStyle BackColor=&quot;#CE5D5A&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;White&quot; /&gt;  
+ &lt;RowStyle BackColor=&quot;#F7F7DE&quot; /&gt;  
+ &lt;PagerStyle BackColor=&quot;#F7F7DE&quot; ForeColor=&quot;Black&quot; HorizontalAlign=&quot;Right&quot; /&gt;  
+ &lt;HeaderStyle BackColor=&quot;#6B696B&quot; Font-Bold=&quot;True&quot; ForeColor=&quot;White&quot; /&gt;  
+
+
+ &lt;/asp:FormView&gt;  
+
+ &lt;/div&gt;  
+ &lt;/form&gt;  
+&lt;/body&gt;  
+&lt;/html&gt;  
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2006/10/02/asp/" data-id="cjcnlghk6000db3kyz3mem75m" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2006/10/13/flashwmaflashexternalinterfacemediaplay/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          偽．flash播放器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2006/08/01/mmug-function-test-var-fso/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">用Javascript呼叫ActiveX(IE only)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/">GCP</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/">docker</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/GCP-Container-Registry/">GCP Container Registry</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/">Jandi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/redmine/">redmine</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/rails/">rails</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/">link_to</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/">ssl</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/Https/">Https</a></li></ul></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">January 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">October 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/06/">June 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/01/">January 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/12/">December 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/11/">November 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/10/">October 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">September 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/08/">August 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/07/">July 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">June 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/05/">May 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/04/">April 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/02/">February 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">October 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/08/">August 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/07/">July 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/05/">May 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/04/">April 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/03/">March 2006</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/19/use-gcp-container-registry-to-establish-docker-private-registry/">使用GCP Container Registry建立docker private registry</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/23/rails51-and-webpacker/">rails5.1與webpacker</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/aws-api-gateway-notes/">AWS api gateway筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/1575726/">在aws Lambda上運行含binary的nodejs modules</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Joehwang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

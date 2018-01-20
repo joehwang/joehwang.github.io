@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Joehwang.tw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Joehwang.tw">
+<meta property="og:url" content="http://blog.joehwang.net/page/5/index.html">
+<meta property="og:site_name" content="Joehwang.tw">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Joehwang.tw">
+  
+    <link rel="alternate" href="/atom.xml" title="Joehwang.tw" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Joehwang.tw</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.joehwang.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-table" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/06/06/table/" class="article-date">
+  <time datetime="2007-06-06T04:51:00.000Z" itemprop="datePublished">2007-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/06/06/table/">查詢資料庫中欄位名出現在哪些table</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>查詢資料庫中哪些talbe有groupID欄位<br>sp_msforeachtable ‘if exists(select top 1 * from ? where GroupID like ‘’%’’) select ‘’?’’’ </p>
+<p>查詢資料庫中applyman欄位值為429的table有哪幾個<br>sp_msforeachtable ‘if exists(select top 1 * from ? where applyman = ‘’429’’) select ‘’?’’’ </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/06/06/table/" data-id="cjcnlghkm000rb3ky8bdxtna5" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mssql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/06/06/mssql/" class="article-date">
+  <time datetime="2007-06-06T03:37:00.000Z" itemprop="datePublished">2007-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/06/06/mssql/">查詢MSSQL資料庫中所有欄位的資料筆數</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>select a.name,max(b.rows) as rows  from sysobjects a,sysindexes b where a.id= b.id and a.xtype = ‘u’<br>group by a.name</p>
+<p><strong>*MSSQL專用</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/06/06/mssql/" data-id="cjcnlghkk000pb3kytatgqstx" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-rorautocomplete" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/05/26/rorautocomplete/" class="article-date">
+  <time datetime="2007-05-25T20:03:00.000Z" itemprop="datePublished">2007-05-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/05/26/rorautocomplete/">RoR的AutoComplete</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>關於RoR的AutoComplete  </p>
+<p>用YUI套件達成AutoComplete功能code實在太多了，在ROR中只要在  </p>
+<p>Controller:  </p>
+<p>#auto_complete_for model名稱(table名), 欄位名稱<br>auto_complete_for :recipe, :name  </p>
+<p>View:  </p>
+<p>Country:   </p>
+<p>加上三行code就可以有一個AutoComplete的視窗囉!想要自訂下拉區域的話可以參考slash7或script.aculo.us/  </p>
+<p>要注意auto_complete_for :country, :name不能寫在function裡面  </p>
+<p>錯誤:<br>class SearchController def index<br> auto_complete_for :recipe, :name<br>end<br>end  </p>
+<p>正確:<br>class SearchController auto_complete_for :recipe, :name<br>end</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/05/26/rorautocomplete/" data-id="cjcnlghkn000sb3kyyjbojgc2" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-httpwww" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/05/26/httpwww/" class="article-date">
+  <time datetime="2007-05-25T19:29:00.000Z" itemprop="datePublished">2007-05-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/05/26/httpwww/">今天參考&#34;啊鳴的狗窩(http://www.josephjiang.com/)&#34;利用YUI的AutoCompl...</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天參考”啊鳴的狗窩(<a href="http://www.josephjiang.com/)&quot;利用YUI的AutoComplete套件，體驗autocomplete的功能該套件支援XML、JSON等資料格式，還有帥氣的捲動效果，不過前端加很多code" target="_blank" rel="noopener">http://www.josephjiang.com/)&quot;利用YUI的AutoComplete套件，體驗autocomplete的功能該套件支援XML、JSON等資料格式，還有帥氣的捲動效果，不過前端加很多code</a> @@，我一直以為只要在文字框輸入後YUI就會到xml檔自動分析有哪些字串要秀出，事實證明….我想太多= =，後端還是要自行處理才行，YUI只負責把資料餵到文字框。  </p>
+<p>範例下載:<a href="http://joehwang.myweb.hinet.net/xuite/yui_autocomplete.zip" target="_blank" rel="noopener">http://joehwang.myweb.hinet.net/xuite/yui_autocomplete.zip</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/05/26/httpwww/" data-id="cjcnlghkj000ob3ky8ghv5xsw" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hostmonsterrails-app" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/05/18/hostmonsterrails-app/" class="article-date">
+  <time datetime="2007-05-17T18:06:00.000Z" itemprop="datePublished">2007-05-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/05/18/hostmonsterrails-app/">在HostMonster上安裝rails app</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近和朋友一起合租了HostMonster的空間，使用兩年一個人只要700蠻划算的。可能是對Linux不熟的原因，我覺得HostMonster的rails設定方式很特別。  </p>
+<p>1.建立一個sub domain或add domain  </p>
+<p>2.刪除建立domain時，系統預設的目錄(rm -r 資料夾名)  </p>
+<p>3.建立一個捷徑命名為剛刪掉的資料夾名稱，並把捷徑指向rails app下的public目錄<br>(例如:ln -s /home/帳號名稱/public_html/joehwang.net/rails/test/public )  </p>
+<p>原文:<a href="http://helpdesk.hostmonster.com/kb/index.php?x=&amp;mod_id=2&amp;id=232" target="_blank" rel="noopener">http://helpdesk.hostmonster.com/kb/index.php?x=&amp;mod_id=2&amp;id=232</a>  </p>
+<p>可惜速度有點慢,也不能自行安裝ruby gem，不過…便宜就好</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/05/18/hostmonsterrails-app/" data-id="cjcnlghkj000nb3kyz6cy15v3" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1224" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/05/08/1224/" class="article-date">
+  <time datetime="2007-05-07T20:54:00.000Z" itemprop="datePublished">2007-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/05/08/1224/">12小時轉24小時、取日期區間中有幾個六、日</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天寫的，放在這做個筆記  </p>
+<p>Function ch24(x)<br> ch24=FormatDateTime(x, 2) &amp; “ “ &amp; FormatDateTime(x, 4)<br>end function  </p>
+<p>function manyholiday(ofrom,oend)<br> allday=DateDiff(“D”,ofrom,oend)<br> for i = 1 to allday<br> x=DateAdd(“D”,i,ofrom)<br> if Weekday(x)=1 or Weekday(x)=7 then<br> manyholiday=manyholiday+1<br> end if<br> next<br>end function  </p>
+<p>MyTime = “2007/5/1 下午 03:19:15”<br>response.write ch24(MyTime)&amp;”<br>“<br>response.write ch24(now())&amp;”<br>“<br>response.write “========判斷假日=======”&amp;”<br>“<br>response.write “區間內有”&amp;manyholiday(MyTime,now())&amp;”個假日”&amp;”<br>“  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/05/08/1224/" data-id="cjcnlghki000mb3ky8chvff5m" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog-post" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/05/05/blog-post/" class="article-date">
+  <time datetime="2007-05-04T17:22:00.000Z" itemprop="datePublished">2007-05-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/05/05/blog-post/">美觀兼具實用的桌面快捷列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很棒的Apple dock在<a href="http://playpcesor.blogspot.com/2007/04/objectdock-19.html" target="_blank" rel="noopener">電腦玩物</a>看到的，本以為是個華而不實的軟體<br>不過試用之後覺得很棒，不僅特效酷炫使用起來也很順手，把桌面上的捷徑丟進去以後免去了找軟體捷徑的困擾，更讓桌面一整個清爽，推薦給大家!  </p>
+<p><a href="http://www.stardock.com/products/objectdock/downloads.asp#download" target="_blank" rel="noopener">載點</a><br><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/11411646/0.jpg" alt="">  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/05/05/blog-post/" data-id="cjcnlghkg000lb3ky3ebyw7yb" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-nicesearch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/04/14/nicesearch/" class="article-date">
+  <time datetime="2007-04-13T21:22:00.000Z" itemprop="datePublished">2007-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/04/14/nicesearch/">Nicesearch好用的檔案搜尋軟體!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近公司要把intranet的DB由Access轉移到MSSQL，以前的舊程式用了許多Access專用的語法如NOW()、一些括號的方式，要在幾千個檔案改這些SQL根本是海底撈針，好在有這個軟體可以搜尋程式的內文，還可以下簡單的條件，推薦給大家 </p>
+<p><a href="http://sourceforge.net/projects/nicesearch/" target="_blank" rel="noopener">．載點． </a></p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/11032186/0.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/04/14/nicesearch/" data-id="cjcnlghkf000kb3ky0u8f3a87" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-winmerge" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/02/16/winmerge/" class="article-date">
+  <time datetime="2007-02-15T22:38:00.000Z" itemprop="datePublished">2007-02-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/02/16/winmerge/">很棒的文件比對軟體Winmerge</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>推薦大家一個比對文件的軟體Winmerge</p>
+<p>可以比對相同資料夾的所有文件，而且文件差異處也標示的很清楚</p>
+<p>不管是上線或維護程式都很好用~~~強推啦!!</p>
+<blockquote>
+<blockquote>
+<p><a href="http://winmerge.org/" target="_blank" rel="noopener">http://winmerge.org/</a>&lt;&lt;</p>
+</blockquote>
+</blockquote>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/10206267/0.jpg" alt=""></p>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/10206267/1.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/02/16/winmerge/" data-id="cjcnlghkd000jb3kyk0udfrm5" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mail2000-for-googlebar" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/02/13/mail2000-for-googlebar/" class="article-date">
+  <time datetime="2007-02-12T23:46:00.000Z" itemprop="datePublished">2007-02-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/02/13/mail2000-for-googlebar/">Mail2000 for Googlebar的按鈕產生器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用mail2000五、六年了，之前有個openbar的服務蠻好用的，可惜後來openfind做調整，把那項服務拿掉了(?)，幸好現在Googlebar可以自訂按鈕，因此寫了這個Mail2000按鈕<br>for Googlebar的產生器，分享給大家^^</p>
+<blockquote>
+<blockquote>
+<p><a href="http://www.a9109.com/googlebar/open.htm" target="_blank" rel="noopener">Mail2000按鈕由此去!</a>&lt;&lt;</p>
+</blockquote>
+</blockquote>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/10155980/0.jpg" alt=""></p>
+<p>ps:特別感謝前前室友魚缸，改掉我80%的code Orz，讓這個產生器可以順利產出(不愧是高應大資管所的研究”僧”啊!)<img src="http://s.blog.xuite.net/_image/emotion/m7.gif" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.joehwang.net/2007/02/13/mail2000-for-googlebar/" data-id="cjcnlghkc000ib3ky458a5dk6" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/">GCP</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/">docker</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/GCP/docker/GCP-Container-Registry/">GCP Container Registry</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/">Jandi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Jandi/redmine/">redmine</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/rails/">rails</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/">link_to</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/">ssl</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/link-to/ssl/Https/">Https</a></li></ul></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">January 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">October 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/06/">June 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/01/">January 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/12/">December 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/11/">November 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/10/">October 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">September 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/08/">August 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/07/">July 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">June 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/05/">May 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/04/">April 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/02/">February 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">October 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/08/">August 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/07/">July 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/05/">May 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/04/">April 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/03/">March 2006</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/19/use-gcp-container-registry-to-establish-docker-private-registry/">使用GCP Container Registry建立docker private registry</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/23/rails51-and-webpacker/">rails5.1與webpacker</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/aws-api-gateway-notes/">AWS api gateway筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/1575726/">在aws Lambda上運行含binary的nodejs modules</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Joehwang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
