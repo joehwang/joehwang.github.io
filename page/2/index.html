@@ -149,6 +149,140 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-change-the-bootstrap-button-color" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/08/16/change-the-bootstrap-button-color/">Rails更改bootstrap按鈕顏色</a>
+    </h1>
+  
+
+        
+        <a href="/2013/08/16/change-the-bootstrap-button-color/" class="archive-article-date">
+  	<time datetime="2013-08-15T19:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-08-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>更改bootstrap按鈕顏色這事，我一直找不到好用又有效率的方法</p>
+<p>以下整理兩種作法</p>
+<h2 id="一、override-bootstrap-scss裡的變數"><a href="#一、override-bootstrap-scss裡的變數" class="headerlink" title="一、override bootstrap scss裡的變數"></a>一、override bootstrap scss裡的變數</h2><p>查詢bootstrap裡的scss變數然後蓋過去<br>[[<a href="http://decioferreira.github.io/bootstrap-generators/" target="_blank" rel="noopener">http://decioferreira.github.io/bootstrap-generators/</a>]]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*粉紅色按鈕*/</span><br><span class="line">$btnSuccessBackground: darken(#DD5295,5%);</span><br><span class="line">$btnSuccessBackgroundHighlight: lighten($btnSuccessBackground, 5%);</span><br><span class="line">/*藍色按鈕*/</span><br><span class="line">$btnPrimaryBackground: #4a96d0;</span><br><span class="line">$btnPrimaryBackgroundHighlight: lighten(#4a96d0, 1%);</span><br><span class="line">/*登入按鈕*/</span><br><span class="line">$btnInfoBackground: darken(#1BCDCD, 5%);</span><br><span class="line">$btnInfoBackgroundHighlight: #1BCDCD;</span><br><span class="line">/*facebook登入按鈕*/</span><br><span class="line">$btnDangerBackground: darken(#4D6CA2,5%);</span><br><span class="line">$btnDangerBackgroundHighlight: lighten(#4D6CA2,0%);</span><br><span class="line">@import &quot;bootstrap&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="二、css直接覆寫"><a href="#二、css直接覆寫" class="headerlink" title="二、css直接覆寫"></a>二、css直接覆寫</h2><p>基本上就是蓋掉button上的css</p>
+<p>[[<a href="http://charliepark.org/bootstrap_buttons/" target="_blank" rel="noopener">http://charliepark.org/bootstrap_buttons/</a>]]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.btn-custom &#123;</span><br><span class="line">  background-color: hsl(201, 100%, 30%) !important;</span><br><span class="line">  background-repeat: repeat-x;</span><br><span class="line">  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=&quot;#00a5ff&quot;, endColorstr=&quot;#006399&quot;);</span><br><span class="line">  background-image: -khtml-gradient(linear, left top, left bottom, from(#00a5ff), to(#006399));</span><br><span class="line">  background-image: -moz-linear-gradient(top, #00a5ff, #006399);</span><br><span class="line">  background-image: -ms-linear-gradient(top, #00a5ff, #006399);</span><br><span class="line">  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #00a5ff), color-stop(100%, #006399));</span><br><span class="line">  background-image: -webkit-linear-gradient(top, #00a5ff, #006399);</span><br><span class="line">  background-image: -o-linear-gradient(top, #00a5ff, #006399);</span><br><span class="line">  background-image: linear-gradient(#00a5ff, #006399);</span><br><span class="line">  border-color: #006399 #006399 hsl(201, 100%, 25%);</span><br><span class="line">  color: #fff !important;</span><br><span class="line">  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/08/16/change-the-bootstrap-button-color/">展開全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vagrant-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/24/vagrant-test/">vagrant測試</a>
+    </h1>
+  
+
+        
+        <a href="/2013/07/24/vagrant-test/" class="archive-article-date">
+  	<time datetime="2013-07-23T20:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>好工具!<br>在本機自動佈署虛擬機支援visualbox、vmware<br>安裝<br>vargant<br><a href="http://downloads.vagrantup.com/" target="_blank" rel="noopener">http://downloads.vagrantup.com/</a></p>
+<p>選擇和下載vargant的虛擬box</p>
+<p>box:<a href="http://www.vagrantbox.es/" target="_blank" rel="noopener">http://www.vagrantbox.es/</a></p>
+<p>參考:<a href="http://gogojimmy.net/2013/05/26/vagrant-tutorial/" target="_blank" rel="noopener">http://gogojimmy.net/2013/05/26/vagrant-tutorial/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/07/24/vagrant-test/">展開全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-tamiya-70168" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -795,136 +929,6 @@ end
 
 
   
-    <article id="post-flexpopupmanager" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2009/01/10/flexpopupmanager/">flex的PopUpManager視窗通訊</a>
-    </h1>
-  
-
-        
-        <a href="/2009/01/10/flexpopupmanager/" class="archive-article-date">
-  	<time datetime="2009-01-09T22:59:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2009-01-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://2.bp.blogspot.com/_hl70JQ2zGqA/SWhY6W5-OXI/AAAAAAAACmA/F2JKv37F5_I/s1600-h/4.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/_hl70JQ2zGqA/SWhY6W5-OXI/AAAAAAAACmA/F2JKv37F5_I/s400/4.png" alt=""></a>  </p>
-<p>一個簡單的flex PopUpManager視窗通訊範例  </p>
-<p><a href="http://www.joehwang.net/blog/poptalk/bin-release/poptalk.html" target="_blank" rel="noopener">由此去…</a>  </p>
-<p>Source請按右鍵選Viewsource </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2009/01/10/flexpopupmanager/">展開全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-blog-post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2008/10/04/blog-post/">計算字串中某些關鍵字的出現次數</a>
-    </h1>
-  
-
-        
-        <a href="/2008/10/04/blog-post/" class="archive-article-date">
-  	<time datetime="2008-10-04T05:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-10-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>做個筆記，省的每次都忘記XD  </p>
-<p>//被搜尋的字串<br>str1=”abcgdefgggg”<br>//關鍵字<br>key=”gg”<br>document.write(CountKeyword(str1,key));<br>function CountKeyword(str,keyword){<br> index = 0;<br> count = 0;<br> while (index!=-1){<br> index = str.indexOf(keyword,index);<br> if (index!=-1){<br> index = index + keyword.length;<br> count++;<br> }<br> }<br> return count;<br>}   </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2008/10/04/blog-post/">展開全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -939,7 +943,7 @@ end
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Joehwang
+    		&copy; 2019 Joehwang
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

@@ -149,6 +149,139 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-inlineblock" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/11/29/inlineblock/">inline和block</a>
+    </h1>
+  
+
+        
+        <a href="/2007/11/29/inlineblock/" class="archive-article-date">
+  	<time datetime="2007-11-28T22:02:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2007-11-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Block Element:、、、…etc<br>Inline Element:、、…etc更多可參考<a href="http://big5.ce.cn/gate/big5/blog.ce.cn/html/28/106828-14009.html" target="_blank" rel="noopener">   http://big5.ce.cn/gate/big5/blog.ce.cn/html/28/106828-14009.html</a>  </p>
+<p>Inline特點是和其他元素在同一行顯示，而且height、padding、margin不得改變，寬度是內文或圖片的寬度也不可自行設定ex，block則完全相反，特點為從新的一行開始且width、height、padding、margin都可自行設定。可用display:block或display:inline的CSS屬性把inline元素切換為有block Element的性質，反之亦然。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2007/11/29/inlineblock/">展開全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-as3-to-jpg" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/11/06/as3-to-jpg/">AS3 to JPG</a>
+    </h1>
+  
+
+        
+        <a href="/2007/11/06/as3-to-jpg/" class="archive-article-date">
+  	<time datetime="2007-11-06T08:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2007-11-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在<a href="http://benbenstudio.blogspot.com/2007/08/flash-webcam.html" target="_blank" rel="noopener">邦邦</a>和<a href="http://blog.yam.com/milkmidi/category/768210" target="_blank" rel="noopener">milkmidi</a>看到webcam to JPG的文章蠻有意思的，所以做了一個文字框轉JPG的練習。</p>
+<p><a href="http://www.joehwang.net/flex/bytearrayToFile" target="_blank" rel="noopener">DEMO</a></p>
+<p>流程<br>把文字框畫在Bitmapdata→用JPGEncoder 把bitmapdata編碼為JPG格式→丟到ByteArray→用uploadFile()上傳到後端並產生實體檔案<br>JPGEncoder和uploadFile的部份是外國強者開發的，所以我們只要懷著感恩的心引用函式即可~<br>JPEGEncoder 可參考以下網址：<br><a href="http://marstonstudio.com/index.php/2007/08/19/how-to-take-a-snapshot-of-a-flash-movie-and-automatically-upload-the-jpg-to-a-server-in-three-easy-steps/" target="_blank" rel="noopener">http://marstonstudio.com/index.php/2007/08/19/how-to-take-a-snapshot-of-a-flash-movie-and-automatically-upload-the-jpg-to-a-server-in-three-easy-steps/</a></p>
+<p><a href="http://code.google.com/p/as3corelib/" target="_blank" rel="noopener">http://code.google.com/p/as3corelib/</a><br>uploadFile()可參考以下網址：<br><a href="http://www.jooce.com/blog/?p=143" target="_blank" rel="noopener">http://www.jooce.com/blog/?p=143</a><br><a href="http://www.jooce.com/blog/wp-content/uploads/2007/06/uploadFile.txt" target="_blank" rel="noopener">http://www.jooce.com/blog/wp-content/uploads/2007/06/uploadFile.txt</a><br>Code如下:<br>bytearrayToFile.mxml</p>
+<pre><code>$uploadfile = $uploaddir . basename($_FILES[&apos;Filedata&apos;][&apos;name&apos;]);   
+$temploadfile = $_FILES[&apos;Filedata&apos;][&apos;tmp_name&apos;];   
+move_uploaded_file($temploadfile , $uploadfile); ?&gt;  
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2007/11/06/as3-to-jpg/">展開全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-jquery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1071,135 +1204,6 @@ BEGIN_TABLE
 
 
   
-    <article id="post-css" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2007/06/30/css/">CSS做的下拉表單</a>
-    </h1>
-  
-
-        
-        <a href="/2007/06/30/css/" class="archive-article-date">
-  	<time datetime="2007-06-29T19:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2007-06-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>很棒的CSS下拉表單</p>
-<p>不僅有設計感而且code也精簡，cool!</p>
-<p><a href="http://solardreamstudios.com/_img/learn/css/cssmenus/index-horiz.html" target="_blank" rel="noopener">http://solardreamstudios.com/_img/learn/css/cssmenus/index-horiz.html</a># </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2007/06/30/css/">展開全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-table" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2007/06/06/table/">查詢資料庫中欄位名出現在哪些table</a>
-    </h1>
-  
-
-        
-        <a href="/2007/06/06/table/" class="archive-article-date">
-  	<time datetime="2007-06-06T04:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2007-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>查詢資料庫中哪些talbe有groupID欄位<br>sp_msforeachtable ‘if exists(select top 1 * from ? where GroupID like ‘’%’’) select ‘’?’’’ </p>
-<p>查詢資料庫中applyman欄位值為429的table有哪幾個<br>sp_msforeachtable ‘if exists(select top 1 * from ? where applyman = ‘’429’’) select ‘’?’’’ </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2007/06/06/table/">展開全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1214,7 +1218,7 @@ BEGIN_TABLE
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Joehwang
+    		&copy; 2019 Joehwang
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

@@ -149,6 +149,148 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mail2000-for-googlebar" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/02/13/mail2000-for-googlebar/">Mail2000 for Googlebar的按鈕產生器</a>
+    </h1>
+  
+
+        
+        <a href="/2007/02/13/mail2000-for-googlebar/" class="archive-article-date">
+  	<time datetime="2007-02-12T23:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2007-02-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用mail2000五、六年了，之前有個openbar的服務蠻好用的，可惜後來openfind做調整，把那項服務拿掉了(?)，幸好現在Googlebar可以自訂按鈕，因此寫了這個Mail2000按鈕<br>for Googlebar的產生器，分享給大家^^</p>
+<blockquote>
+<blockquote>
+<p><a href="http://www.a9109.com/googlebar/open.htm" target="_blank" rel="noopener">Mail2000按鈕由此去!</a>&lt;&lt;</p>
+</blockquote>
+</blockquote>
+<p><img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/10155980/0.jpg" alt=""></p>
+<p>ps:特別感謝前前室友魚缸，改掉我80%的code Orz，讓這個產生器可以順利產出(不愧是高應大資管所的研究”僧”啊!)<img src="http://s.blog.xuite.net/_image/emotion/m7.gif" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2007/02/13/mail2000-for-googlebar/">展開全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-aspactive-directory-server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/12/29/aspactive-directory-server/">asp與Active Directory Server的互動</a>
+    </h1>
+  
+
+        
+        <a href="/2006/12/29/aspactive-directory-server/" class="archive-article-date">
+  	<time datetime="2006-12-28T16:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2006-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>工作上需要解AD Account被鎖住的Web介面，使用MS提供的ADSI元件可以很方便的存取AD Server，以下為程式  </p>
+<p>function logintest()<br>‘登入測試<br>if sUser “” then<br> set oADSI = GetObject(“WinNT:”)<br> on error resume next<br> set oIIS = oADSI.OpenDSObject(“WinNT://AD server名稱” , sUser, sPassword,0)<br> if err.number = 0 then<br> Response.Write “Logon OK.<br>“<br> else<br> Response.Write “Logon failed.<br>“<br> end if<br>end if<br>end function  </p>
+<p>function ChgPWD()<br>Dim obj<br> set oADSI = GetObject(“WinNT:”)<br> set obj = oADSI.OpenDSObject(“WinNT://AD server名稱/“&amp;sAccount , sUser, sPassword,0)<br> ‘原密碼,新密碼<br> obj.ChangePassword “原來的密碼”, “新的密碼”  </p>
+<p> response.write “密碼已更新”<br>end function  </p>
+<p>function listmem()<br> ‘列出ad所有帳號<br> Dim obj<br> set oADSI = GetObject(“WinNT:”)<br> set obj = oADSI.OpenDSObject(“WinNT://AD server名稱”, sUser, sPassword,0)<br> for each aaa in obj<br> response.write aaa.name&amp;”<br>“<br> next<br>end function  </p>
+<p>function SetPWD()<br>‘reset密碼<br> Dim obj<br> set oADSI = GetObject(“WinNT:”)<br> set obj = oADSI.OpenDSObject(“WinNT://AD server名稱/“&amp;sAccount , sUser, sPassword,0)<br> obj.SetPassword “Kaubarcd0410”<br>end function  </p>
+<p>function setAccountDisable()<br>‘關掉該帳號<br> Dim obj<br> set oADSI = GetObject(“WinNT:”)<br> set obj = oADSI.OpenDSObject(“WinNT://AD server名稱/“&amp;sAccount , sUser, sPassword,0)<br> obj.AccountDisabled = true<br> obj.SetInfo<br> response.write “ok”<br>end function  </p>
+<p>function unlock()<br>‘解除鎖定的帳號<br> Dim obj<br> set oADSI = GetObject(“WinNT:”)<br> set obj = oADSI.OpenDSObject(“WinNT://AD server名稱/“&amp;sAccount , sUser, sPassword,0)<br> obj.IsAccountLocked = False<br> obj.SetInfo<br> response.write “ok”<br>end function  </p>
+<p>sUser=”AD server名稱/帳號名稱”<br>sPassword=”你的密碼”<br>‘要被作用的帳號=====<br>sAccount=”joe_huang”<br>‘===================  </p>
+<p>‘call listmem<br>call logintest<br>‘call SetPWD<br>‘call ChgPWD<br>‘call unlock  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2006/12/29/aspactive-directory-server/">展開全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-net-20mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -941,271 +1083,6 @@ star_btn.onPress=function(){
 
 
   
-    <article id="post-ajax" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2006/07/09/ajax/">AJAX範例-取後端資料庫資料</a>
-    </h1>
-  
-
-        
-        <a href="/2006/07/09/ajax/" class="archive-article-date">
-  	<time datetime="2006-07-08T19:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2006-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近工作上用到了XMLHttpRequest()，感覺不錯，以下是範例<br>參考中興大學資管系 呂瑞麟教授的文件寫的<br>範例網址:<a href="http://60.248.36.151/Temp/joehwang/ajax.asp" target="_blank" rel="noopener">http://60.248.36.151/Temp/joehwang/ajax.asp</a>  </p>
-<p>主程式:ajax.asp  </p>
-<pre><code>&lt;%@LANGUAGE=&quot;VBSCRIPT&quot; CODEPAGE=&quot;65001&quot;%&gt;  
-&lt;html&gt;  
-&lt;head&gt;  
-&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;  
-&lt;style type=&quot;text/css&quot;&gt;  
-&lt;!--  
-.boder {  
- border-bottom-color: #808080;  
-}  
-.loading2 {  
- font-family: Arial, Helvetica, sans-serif;  
- font-size: 12px;  
- background-color: #FFFFAA;  
- position: absolute;  
- padding: 1px;  
- display:none;  
-
-}  
---&gt;  
-&lt;/style&gt;  
-&lt;title&gt;AJAX試驗&lt;/title&gt;&lt;table width=&quot;27%&quot; border=&quot;1&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;  
- &lt;tr&gt;  
- &lt;td width=&quot;9%&quot;&gt;ID &lt;div id=&quot;loading1&quot; class=&quot;loading2&quot;&gt;載入中&lt;/div&gt;&lt;/td&gt;  
- &lt;td width=&quot;91%&quot;&gt;&amp;nbsp;&lt;span class=&quot;boder&quot; id=&quot;id&quot;&gt; &lt;!--顯示id--&gt;&lt;/span&gt;&lt;/td&gt;  
- &lt;/tr&gt;  
- &lt;tr&gt;  
- &lt;td&gt;Name&lt;/td&gt;  
- &lt;td&gt;&amp;nbsp;&lt;span class=&quot;boder&quot; id=&quot;name&quot;&gt;&lt;!--顯示name--&gt;&lt;/span&gt;&lt;/td&gt;  
- &lt;/tr&gt;  
- &lt;tr&gt;  
- &lt;td&gt;Address&lt;/td&gt;  
- &lt;td&gt;&amp;nbsp;&lt;span class=&quot;boder&quot; id=&quot;address&quot;&gt;&lt;!--顯示address--&gt;&lt;/span&gt;&lt;/td&gt;  
- &lt;/tr&gt;  
-&lt;/table&gt;  
-&lt;p&gt;&lt;a href=&quot;javascript:makeRequest(&apos;get&apos;);&quot;&gt;下一則 &lt;/a&gt;&lt;/p&gt;  
-&lt;p&gt;&lt;a href=&quot;javascript:makeRequest(&apos;post&apos;);&quot;&gt;指定第三筆Record&lt;/a&gt;&lt;/p&gt;  
-&lt;/body&gt;  
-&lt;/head&gt;  
-&lt;/html&gt;  
-&lt;script type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;  
- function makeRequest(x) {  
- document.getElementById(&quot;loading1&quot;).style.display=&quot;block&quot;;  
- var http_request = false;  
- if (window.XMLHttpRequest) { // Mozilla, Safari,...  
- http_request = new XMLHttpRequest();  
- } else if (window.ActiveXObject) { // IE  
- try {  
- http_request = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);  
- } catch (e) {  
- try {  
- http_request = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);  
- } catch (e) {}  
- }  
- }  
- if (!http_request) {  
- alert(&apos;Giving up :( Cannot create an XMLHTTP instance&apos;);  
- return false;  
- }  
- // 定義事件處理函數為 alterContents()  
- http_request.onreadystatechange = function() {   
- alertContents(http_request);   
-//共有五個階段  
-//0 (尚未初始化;)   
-//1 (載入中; http_request 已經設定好了，但是還沒呼叫 send())   
-//2 (載入完成; http_request 已經送給 server 了，server 已經開始 處理了，你可以取得 content header 了。)   
-//3 (可以互動的; http_request 已經部份完成了，所以有可能取得 部份處理完的資料)   
-//4 (完成的; compelte)   
- };  
-
- switch(x){  
- case &apos;get&apos;:  
- http_request.open(&apos;GET&apos;, &quot;engine.asp&quot;, true);  
- http_request.send(null);  
- break;  
- case &apos;post&apos;:  
-http_request.open(&apos;POST&apos;, &apos;engine.asp&apos;, true);  
-//HTTP的方法可用POST或GET,目標網頁(不能跨domain),是否非同步(非同步的意思是代表在跟遠端取得資源的同時，browser 可以繼續執行 Javascript 的內容)因為大都設為true(非同步)  
-http_request.setRequestHeader(&apos;Content-Type&apos;, &apos;application/x-www-form-urlencoded&apos;);  
-//如果使用 POST 的方式，我們除了要設定 MIME 的類型  
- http_request.send(&apos;id=3&apos;);  
-//送參數，若有兩個以上參數可用http_request.send(&apos;id=3&amp;aa=5&apos;);  
-//若要把變數當成參數可用http_request.send(&apos;id=&apos;+變數+&apos;&amp;aa=&apos;+變數);  
- break;  
- }  
- }  
-
- function alertContents(http_request) {  
- if (http_request.readyState == 4) {  
- if (http_request.status == 200) {  
- var xmldoc = http_request.responseXML;//宣告xml物件  
- var id_node = xmldoc.getElementsByTagName(&apos;id&apos;);  
-//設定要取的節點，會以陣列傳回  
- var name_node = xmldoc.getElementsByTagName(&apos;name&apos;);  
- var addr_node = xmldoc.getElementsByTagName(&apos;address&apos;);  
- document.getElementById(&quot;id&quot;).innerHTML=id_node[0].firstChild.nodeValue  
-//取節點的值  
- document.getElementById(&quot;name&quot;).innerHTML=name_node[0].firstChild.nodeValue  
- document.getElementById(&quot;address&quot;).innerHTML=addr_node[0].firstChild.nodeValue   
- document.getElementById(&quot;loading1&quot;).style.display=&quot;none&quot;;//關掉loading的div標籤  
- } else   
- {  
- alert(&apos;There was a problem with the request.&apos;);  
- }  
- }  
- }  
-&lt;/script&gt;  
-</code></pre><p>對資料庫做查詢的程式:engine.asp  </p>
-<pre><code>&lt;%@LANGUAGE=&quot;VBSCRIPT&quot; CODEPAGE=&quot;65001&quot;%&gt;  
-&lt;%&apos;隨機選題目並輸出為XML%&gt;  
-&lt;!--#include file=&quot;connectDB.asp&quot;--&gt;  
-&lt;%  
-Response.Expires=-1500  
-Response.CacheControl=&quot;no-cache&quot;  
-&apos;禁止快取  
-id=request(&quot;id&quot;)  
-set rs=server.CreateObject(&quot;ADODB.Recordset&quot;)  
-if id=&quot;&quot; then  
-&apos;若沒帶參數過來便亂數取一筆record  
- sql=&quot;select * from Employees ORDER BY NEWID()&quot;  
-else  
- &apos;取第三筆record  
- sql=&quot;select * from Employees where EmployeeID=&quot;&amp;id  
-end if  
-rs.Open sql , conn , 3 , 1  
-Response.ContentType=&quot;text/xml&quot;  
-&apos;將文件編碼指定為XML格式，asp產生xml格式時必加  
-response.write &quot;&lt;?xml version=&quot;&amp;chr(34)&amp;&quot;1.0&quot;&amp;chr(34)&amp;&quot; encoding=&quot;&amp;chr(34)&amp;&quot;utf-8&quot;&amp;chr(34)&amp;&quot;?&gt;&quot;  
-response.write &quot;&lt;areas&gt;&quot;  
-response.write &quot;&lt;id&gt;&quot;&amp;rs(&quot;EmployeeID&quot;)&amp;&quot;&lt;/id&gt;&quot;  
-response.write &quot;&lt;name&gt;&quot;&amp;rs(&quot;FirstName&quot;)&amp;&quot;&lt;/name&gt;&quot;  
-response.write &quot;&lt;address&gt;&quot;&amp;rs(&quot;Address&quot;)&amp;&quot;&lt;/address&gt;&quot;  
-response.write &quot;&lt;/areas&gt;&quot;  
-rs.close  
-%&gt;  
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2006/07/09/ajax/">展開全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-flv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2006/05/31/flv/">簡易的在視訊檔案(flv)上加字幕</a>
-    </h1>
-  
-
-        
-        <a href="/2006/05/31/flv/" class="archive-article-date">
-  	<time datetime="2006-05-30T23:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2006-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>之前，在flash裡插入視訊的作法通常是匯到影格中配字幕也很方便   
-</code></pre><p>，不過最大的問題就是有時候影音會不同步，從flv檔出來後就不用那麼<br>麻煩了，把影片轉成flv再從外部呼叫即可，界面和影片可以分離實在很<br>方便。不過掛字幕的便利性就差了點。在flash8中有提供cutepoint這個功<br>能，可以讓影片播放到某個時間點的時候觸發actionscript，網路上在flv檔<br>掛字幕檔的方法通常是把字幕寫到XML檔裡面，影片播放的時候載入xml<br>檔。不過我這次要掛字幕的影片只有一分鐘，所以就不那麼麻煩了。</p>
-<p><strong>step1:</strong>:檔案&gt;匯入視訊，在場景上加入動態文字框(顯示台詞)<br><strong>step2:</strong>:點擊在場景裡的影片檔，然後視窗&gt;屬性&gt;參數<br><strong>step3:</strong>:在列表中選擇cutePoints，選最後面的放大鏡<br><strong>step4:</strong>:在名稱的地方打上台詞，時間為show台詞的時間<img src="http://b.blog.xuite.net/b/0/2/e/14703549/blog_258731/txt/6634465/0.jpg" alt=""></p>
-<p><strong>step5:</strong><br>在第一個影格加上以下的ActionScript</p>
-<p>var my_flvPb:mx.video.FLVPlayback;<br>var listenerObject:Object = new Object();<br>listenerObject.cuePoint = function(eventObject:Object)<br>{<br> dantxt.text= eventObject.info.name<br> //dantxt為動態文字框的name<br>};<br>my_flvPb.addEventListener(“cuePoint”,listenerObject);<br>//my_flvPb為影片檔的name</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2006/05/31/flv/">展開全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1220,7 +1097,7 @@ rs.close
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Joehwang
+    		&copy; 2019 Joehwang
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
